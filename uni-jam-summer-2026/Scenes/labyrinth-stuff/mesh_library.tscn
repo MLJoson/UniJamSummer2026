@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://b5xfk7lukdvyv"]
+
+[ext_resource type="PackedScene" uid="uid://braihfemhltdm" path="res://Assets/cube.blend" id="1_x10va"]
+
+[node name="Node3D" type="Node3D" unique_id=87110975]
+
+[node name="cube" parent="." unique_id=660954988 instance=ExtResource("1_x10va")]
