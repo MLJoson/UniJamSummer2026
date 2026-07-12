@@ -1,0 +1,53 @@
+[gd_scene format=3 uid="uid://bvil6hglujv5g"]
+
+[ext_resource type="PackedScene" uid="uid://mmoavkq6hp8t" path="res://Scenes/escapeItems/candle/candle.tscn" id="2_rj0tl"]
+[ext_resource type="PackedScene" uid="uid://bpqvb43q6v5oy" path="res://Scenes/player.tscn" id="2_rqw8d"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_fk05a"]
+
+[sub_resource type="Sky" id="Sky_x4sgb"]
+sky_material = SubResource("ProceduralSkyMaterial_fk05a")
+
+[sub_resource type="Environment" id="Environment_fk05a"]
+background_mode = 2
+sky = SubResource("Sky_x4sgb")
+ambient_light_source = 2
+ambient_light_color = Color(0.8862616, 0.88626146, 0.8862615, 1)
+ambient_light_sky_contribution = 0.0
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3c1sc"]
+size = Vector3(50, 0.01, 50)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dt88v"]
+albedo_color = Color(0.85882354, 0.8117647, 0.6392157, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_mw5t6"]
+size = Vector2(50, 50)
+
+[node name="ItemTest" type="Node3D" unique_id=1752000256]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1120282498]
+environment = SubResource("Environment_fk05a")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1911935457]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.35608864, 31.218174, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1655477287]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=2136867887]
+shape = SubResource("BoxShape3D_3c1sc")
+debug_color = Color(1, 1, 1, 0)
+debug_fill = false
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D" unique_id=1230816906]
+material_override = SubResource("StandardMaterial3D_dt88v")
+mesh = SubResource("PlaneMesh_mw5t6")
+
+[node name="Player" parent="." unique_id=381315849 instance=ExtResource("2_rqw8d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.056459427, 3.4945784, 0)
+
+[node name="candle" parent="." unique_id=873437577 instance=ExtResource("2_rj0tl")]
+transform = Transform3D(0.19318517, -0.05176381, 0, 0.05176381, 0.19318517, 0, 0, 0, 0.2, -10.463425, 2.0820045, -6.46229)
+
+[node name="candle2" parent="." unique_id=481306801 instance=ExtResource("2_rj0tl")]
+transform = Transform3D(0.19318517, -0.05176381, 0, 0.05176381, 0.19318517, 0, 0, 0, 0.2, -10.463425, 2.0820045, -6.46229)
