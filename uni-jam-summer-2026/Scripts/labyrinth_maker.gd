@@ -1,17 +1,68 @@
 @tool
 extends Node3D
 
-@export_tool_button("Generate") var generate = generate_map
-@export var size := Vector2i(30, 20) :
+@export_tool_button("Generate") var start = generate
+@export var size := Vector2i(10, 10) :
 	set(value):
 		size.x = clamp(value.x, 0, 100)
 		size.y = clamp(value.y, 0, 100)
 
-func generate_map() -> void:
+var start_pos : Vector2i
+
+func generate() -> void:
 	delete_exisiting_tiles()
 	create_base_tiles()
-	$GridMap.set_cell_item(Vector3i(1, 1, 0), -1)
+	generate_labyrinth()
 
+func generate_labyrinth() -> void:
+	start_pos = Vector2i(randi_range(1, size.x - 1), randi_range(1, size.y - 1))
+	print(start_pos)
+	$GridMap.set_cell_item(Vector3i(start_pos.x, 0, start_pos.y), -1)
+	var cur_pos = start_pos
+	var flag = true
+	var movement_stack = []
+	
+	while flag:
+		var valid_moves = get_valid_moves(cur_pos)
+		if valid_moves:
+			var direction = valid_moves.pick_random()
+			cur_pos += direction #moves cur_pos in that direction
+			$GridMap.set_cell_item(Vector3i(cur_pos.x, 0, cur_pos.y), -1)
+			movement_stack.append(direction)
+		elif movement_stack.size() > 0:
+			cur_pos -= movement_stack.pop_back()
+		else:
+			flag = false
+
+#gets all possible valid moves for the current position.
+#valid moves:
+#1. Move into a square that currently is filled
+#2. Don't break into areas that have hallways or are outside the map
+func get_valid_moves(cur_pos) -> Array:
+	var moves = [Vector2i(0, 1), Vector2i(0, -1), Vector2i(1, 0), Vector2i(-1, 0)]
+	var valid_moves = []
+	for move in moves:
+		if is_valid(cur_pos, move):
+			valid_moves.append(move)
+	return valid_moves
+
+func is_valid(pos, dir) -> bool:
+	if $GridMap.get_cell_item(Vector3i(pos.x + dir.x, 0, pos.y + dir.y)) == -1:
+		return false
+	if $GridMap.get_cell_item(Vector3i(pos.x + (dir.x * 2), 0, pos.y + (dir.y * 2))) == -1:
+		return false
+	
+	if dir.x == 0:
+		if $GridMap.get_cell_item(Vector3i(pos.x + 1, 0, pos.y + dir.y)) == -1:
+			return false
+		if $GridMap.get_cell_item(Vector3i(pos.x - 1, 0, pos.y + dir.y)) == -1:
+			return false
+	else:
+		if $GridMap.get_cell_item(Vector3i(pos.x + dir.x, 0, pos.y + 1)) == -1:
+			return false
+		if $GridMap.get_cell_item(Vector3i(pos.x + dir.x, 0, pos.y - 1)) == -1:
+			return false
+	return true
 #deletes tiles currently on the gridmap to prevent errors with
 #previous tiles living through generation attempts
 func delete_exisiting_tiles() -> void:
