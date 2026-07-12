@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://c2h41sj2v3tcv"
-path="res://.godot/imported/candle.blend-2d5dee942cf9abc6b383abe7ddbbae88.scn"
+uid="uid://bhl7f56ymf4x0"
+path="res://.godot/imported/feather.blend-0ed3a98432e8e012e4cb6a956e6cba01.scn"
 
 [deps]
 
-source_file="res://Scenes/escapeItems/candle/candle.blend"
-dest_files=["res://.godot/imported/candle.blend-2d5dee942cf9abc6b383abe7ddbbae88.scn"]
+source_file="res://Scenes/escapeItems/feather/feather.blend"
+dest_files=["res://.godot/imported/feather.blend-0ed3a98432e8e012e4cb6a956e6cba01.scn"]
 
 [params]
 

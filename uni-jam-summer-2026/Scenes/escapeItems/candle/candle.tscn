@@ -1,19 +1,24 @@
-[gd_scene format=3 uid="uid://mmoavkq6hp8t"]
+[gd_scene format=3 uid="uid://cnnyatoaxdx3h"]
 
-[ext_resource type="PackedScene" uid="uid://skoaptdpo7na" path="res://Scenes/escapeItems/candle/candle.blend" id="1_g26e1"]
-[ext_resource type="Script" uid="uid://dyhbb28vvkehw" path="res://Scenes/escapeItems/candle/candle.gd" id="2_v616k"]
+[ext_resource type="PackedScene" uid="uid://c2h41sj2v3tcv" path="res://Scenes/escapeItems/candle/candle.blend" id="1_inej1"]
+[ext_resource type="Script" uid="uid://0k2q4dn1kmjy" path="res://Scenes/escapeItems/candle/candle.gd" id="2_eo5cc"]
 
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_g26e1"]
-height = 3.7514648
-radius = 1.25
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_eo5cc"]
+height = 4.1192627
+radius = 1.168457
 
-[node name="candle" unique_id=873437577 instance=ExtResource("1_g26e1")]
-script = ExtResource("2_v616k")
+[node name="Node3D" type="Node3D" unique_id=960145551]
 
-[node name="Area3D" type="Area3D" parent="." index="0" unique_id=925460319]
+[node name="candle" parent="." unique_id=898145120 instance=ExtResource("1_inej1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.40908086, 0, -0.40717816)
+script = ExtResource("2_eo5cc")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" index="0" unique_id=1122202634]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8757324, 0)
-shape = SubResource("CylinderShape3D_g26e1")
+[node name="Area3D" type="Area3D" parent="candle" unique_id=950230535]
 
-[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="candle/Area3D" unique_id=1984513612]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="candle/Area3D" unique_id=360842648]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9242554, 0)
+shape = SubResource("CylinderShape3D_eo5cc")
+
+[connection signal="body_entered" from="candle/Area3D" to="candle" method="_on_area_3d_body_entered"]
