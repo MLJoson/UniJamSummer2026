@@ -8,12 +8,13 @@ extends Area3D
 
 var isPlayerInRadius: bool = false
 var canSeePlayer: bool = false
-var fov = cos(deg_to_rad(fovDegrees))
+var fov: float
 signal lostSightOfPlayer
 
 func _ready() -> void:
 	# set raycast length to same as detection area radiuswwd
 	raycast.target_position = Vector3.FORWARD * collisionShape.shape.radius
+	fov = cos(deg_to_rad(fovDegrees))
 
 func _process(delta: float) -> void:
 	# point raycast towards player if within radius

@@ -70,4 +70,4 @@ transform = Transform3D(-0.45392835, 0, -2.2655299, 0, 0.99999994, 0, 0.8910382,
 use_collision = true
 
 [node name="Player" parent="." unique_id=381315849 instance=ExtResource("2_g10ho")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3728733, -13.59959)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.686083, 1.3728733, -13.59959)
