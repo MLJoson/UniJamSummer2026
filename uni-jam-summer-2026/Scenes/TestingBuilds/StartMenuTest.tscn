@@ -2,6 +2,9 @@
 
 [ext_resource type="Script" uid="uid://b86jhqkjvf3gf" path="res://Scenes/TestingBuilds/StartMenuManager.gd" id="1_1skht"]
 [ext_resource type="PackedScene" uid="uid://cdyeg0rtbunmu" path="res://Scenes/TestingBuilds/PauseMenutest.tscn" id="2_ykihq"]
+[ext_resource type="Script" uid="uid://mr0u2dj01lfr" path="res://Scripts/button_animation_component.gd" id="3_w1d0r"]
+
+[sub_resource type="Theme" id="Theme_ykihq"]
 
 [node name="StartMenuTest" type="Control" unique_id=1052199490]
 layout_mode = 3
@@ -50,20 +53,45 @@ custom_minimum_size = Vector2(400, 200)
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 4
+theme_override_constants/separation = 17
+script = ExtResource("3_w1d0r")
+animation_length = 0.5
+animation_pause_length = 1.0
 
 [node name="Start" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer" unique_id=233039899]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 size_flags_vertical = 3
+theme = SubResource("Theme_ykihq")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 42
 text = "Start"
+flat = true
+
+[node name="TextEdit" type="TextEdit" parent="MarginContainer/VBoxContainer/VBoxContainer/Start" unique_id=1733538217]
+visible = false
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+text = "άρχομαι"
+placeholder_text = "Start"
 
 [node name="Exit" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer" unique_id=1170219953]
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 42
 text = "Exit
 "
+flat = true
+
+[node name="TextEdit" type="TextEdit" parent="MarginContainer/VBoxContainer/VBoxContainer/Exit" unique_id=1420233904]
+visible = false
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+text = "μαλακός"
+placeholder_text = "Exit"
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/VBoxContainer/Start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/VBoxContainer/Exit" to="." method="_on_exit_pressed"]
