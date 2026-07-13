@@ -10,15 +10,19 @@ extends Node3D
 var start_pos : Vector2i
 
 func _ready() -> void:
-	generate()
-	$Player.position = Vector3i(start_pos.x * 2, 0, start_pos.y * 2)
+	#this makes it only run when you start the game, not in-editor
+	if not Engine.is_editor_hint(): 
+		generate()
+		$Player.position = Vector3i(start_pos.x * 2, 0, start_pos.y * 2)
 
+#generates everything relating to the labyrinth
 func generate() -> void:
 	delete_exisiting_tiles()
 	create_base_tiles()
-	generate_labyrinth()
+	generate_pathing()
 
-func generate_labyrinth() -> void:
+#generates the pathing of the labyrinth - eg. which rooms are empty/filled
+func generate_pathing() -> void:
 	start_pos = Vector2i(randi_range(1, size.x - 1), randi_range(1, size.y - 1))
 	print(start_pos)
 	$GridMap.set_cell_item(Vector3i(start_pos.x, 0, start_pos.y), -1)
@@ -74,6 +78,7 @@ func is_valid(pos, dir) -> bool:
 func delete_exisiting_tiles() -> void:
 	for x in 100:
 		for z in 100:
+			$GridMap.set_cell_item(Vector3i(x, -1, z), -1)
 			$GridMap.set_cell_item(Vector3i(x, 0, z), -1)
 			$GridMap.set_cell_item(Vector3i(x, 1, z), -1)
 
