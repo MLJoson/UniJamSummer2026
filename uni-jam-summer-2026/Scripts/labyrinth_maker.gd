@@ -13,11 +13,13 @@ func generate() -> void:
 	delete_exisiting_tiles()
 	create_base_tiles()
 	generate_labyrinth()
+	$Player.position = Vector3i(start_pos.x * 2, 0, start_pos.y * 2)
 
 func generate_labyrinth() -> void:
 	start_pos = Vector2i(randi_range(1, size.x - 1), randi_range(1, size.y - 1))
 	print(start_pos)
 	$GridMap.set_cell_item(Vector3i(start_pos.x, 0, start_pos.y), -1)
+	$GridMap.set_cell_item(Vector3i(start_pos.x, 1, start_pos.y), -1)
 	var cur_pos = start_pos
 	var flag = true
 	var movement_stack = []
@@ -28,6 +30,7 @@ func generate_labyrinth() -> void:
 			var direction = valid_moves.pick_random()
 			cur_pos += direction #moves cur_pos in that direction
 			$GridMap.set_cell_item(Vector3i(cur_pos.x, 0, cur_pos.y), -1)
+			$GridMap.set_cell_item(Vector3i(cur_pos.x, 1, cur_pos.y), -1)
 			movement_stack.append(direction)
 		elif movement_stack.size() > 0:
 			cur_pos -= movement_stack.pop_back()
@@ -69,6 +72,7 @@ func delete_exisiting_tiles() -> void:
 	for x in 100:
 		for z in 100:
 			$GridMap.set_cell_item(Vector3i(x, 0, z), -1)
+			$GridMap.set_cell_item(Vector3i(x, 1, z), -1)
 
 #creates the rectangle of tiles that make up the map.
 #this program takes away tiles to create different paths 
@@ -76,4 +80,6 @@ func delete_exisiting_tiles() -> void:
 func create_base_tiles() -> void:
 	for x in size.x:
 		for z in size.y:
+			$GridMap.set_cell_item(Vector3i(x, 1, z), 0)
 			$GridMap.set_cell_item(Vector3i(x, 0, z), 0)
+			$GridMap.set_cell_item(Vector3i(x, -1, z), 0)
