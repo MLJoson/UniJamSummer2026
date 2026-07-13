@@ -9,11 +9,14 @@ extends Node3D
 
 var start_pos : Vector2i
 
+func _ready() -> void:
+	generate()
+	$Player.position = Vector3i(start_pos.x * 2, 0, start_pos.y * 2)
+
 func generate() -> void:
 	delete_exisiting_tiles()
 	create_base_tiles()
 	generate_labyrinth()
-	$Player.position = Vector3i(start_pos.x * 2, 0, start_pos.y * 2)
 
 func generate_labyrinth() -> void:
 	start_pos = Vector2i(randi_range(1, size.x - 1), randi_range(1, size.y - 1))
