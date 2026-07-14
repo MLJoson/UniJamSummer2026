@@ -3,4 +3,12 @@
 [ext_resource type="Texture2D" uid="uid://b1jwy1ux7ji6x" path="res://Assets/GrayBrick1.png" id="1_tvjr8"]
 
 [resource]
+content_margin_left = 10.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 10.0
 texture = ExtResource("1_tvjr8")
+texture_margin_left = 1.0
+texture_margin_top = 2.0
+texture_margin_right = 1.0
+texture_margin_bottom = 2.0

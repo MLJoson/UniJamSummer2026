@@ -4,13 +4,11 @@
 [ext_resource type="PackedScene" uid="uid://cdyeg0rtbunmu" path="res://Scenes/TestingBuilds/PauseMenutest.tscn" id="2_ykihq"]
 [ext_resource type="FontFile" uid="uid://cws1k2d04mpph" path="res://Assets/PossumSaltareNF.ttf" id="3_a4y0l"]
 [ext_resource type="Script" uid="uid://mr0u2dj01lfr" path="res://Scripts/button_animation_component.gd" id="3_w1d0r"]
-[ext_resource type="StyleBox" uid="uid://os1j5p8iguh1" path="res://Assets/TextureBox/ButtonNormal.tres" id="4_sppv4"]
-[ext_resource type="StyleBox" uid="uid://uvm8ibodyjwi" path="res://Assets/TextureBox/ButtonPressed.tres" id="5_a4yul"]
 
 [sub_resource type="Theme" id="Theme_ykihq"]
 default_font = ExtResource("3_a4y0l")
-Button/styles/hover = ExtResource("5_a4yul")
-Button/styles/normal = ExtResource("4_sppv4")
+Button/styles/hover = null
+Button/styles/normal = null
 
 [node name="StartMenuTest" type="Control" unique_id=1052199490]
 layout_mode = 3
@@ -23,7 +21,6 @@ script = ExtResource("1_1skht")
 start_scene = ExtResource("2_ykihq")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1560176027]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
