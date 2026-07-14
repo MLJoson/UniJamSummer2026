@@ -43,8 +43,9 @@ mesh = SubResource("PlaneMesh_mw5t6")
 [node name="Player" parent="." unique_id=381315849 instance=ExtResource("2_y8j3f")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.056459427, 3.4945784, 0)
 
+[node name="HUD" parent="." unique_id=1288191022 node_paths=PackedStringArray("player") instance=ExtResource("4_vrobk")]
+mouse_filter = 2
+player = NodePath("../Player")
+
 [node name="PauseManager" parent="." unique_id=841703603 instance=ExtResource("3_y8j3f")]
 visible = false
-
-[node name="HUD" parent="." unique_id=1288191022 node_paths=PackedStringArray("player") instance=ExtResource("4_vrobk")]
-player = NodePath("../Player")
