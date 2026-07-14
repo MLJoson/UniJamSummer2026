@@ -46,7 +46,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.056459427, 3.4945784, 0)
 [node name="HUD" parent="." unique_id=1288191022 node_paths=PackedStringArray("player") instance=ExtResource("4_vrobk")]
 mouse_filter = 2
 player = NodePath("../Player")
-playerHealth = 20.0
+playerHealth = 7.55
 
 [node name="PauseManager" parent="." unique_id=841703603 instance=ExtResource("3_y8j3f")]
 visible = false

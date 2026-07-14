@@ -19,7 +19,7 @@ bg_color = Color(0.6, 0.6, 0.6, 0)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4lela"]
 bg_color = Color(1, 1, 1, 1)
 
-[node name="HUD" type="Control" unique_id=1288191022 node_paths=PackedStringArray("progress_bar", "damageEffectPanel")]
+[node name="HUD" type="Control" unique_id=1288191022 node_paths=PackedStringArray("progress_bar")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -29,7 +29,7 @@ grow_vertical = 2
 mouse_filter = 1
 script = ExtResource("1_q4ill")
 progress_bar = NodePath("VBoxContainer/ProgressBar")
-damageEffectPanel = NodePath("DamageEffectPanel")
+bar_consumption_speed = null
 
 [node name="DamageEffectPanel" type="Panel" parent="." unique_id=1309135019]
 modulate = Color(1, 1, 1, 0.5647059)
@@ -39,7 +39,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 2
 theme = ExtResource("2_4lela")
 theme_override_styles/panel = SubResource("StyleBoxTexture_dwqdb")
 
