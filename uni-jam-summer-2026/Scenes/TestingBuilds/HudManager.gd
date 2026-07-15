@@ -2,17 +2,28 @@ extends Control
 
 @export var maxSprintValue : float
 @export var progress_bar : ProgressBar
-@onready var tween : Tween
+@onready var sprint_tween : Tween = create_tween()
 @export var player : Node
-@export var bar_consumption_speed = 1.0 
+@export var bar_consumption_speed : float = 1.0 
 @onready var sprintValue = float(player.sprint_stamina)
- 
+@export var playerHealth : float
+@export var criticalHealthThreshhold : float = 10
+@export var flashingSpeed : float = 1
+@export var damageEffectPanel : Panel
+@onready var healthFlashTween = create_tween()
+var panelModulateValue 
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	if player == null:
 		push_error("Player must be assigned to HUD in inspector")
 	progress_bar.visible = false
+
+
+	panelModulateValue = damageEffectPanel.modulate
+	healthFlashTween.tween_property(damageEffectPanel, "modulate", Color(1.0, 1.0, 1.0, 1.0), flashingSpeed)
+	healthFlashTween.tween_property(damageEffectPanel, "modulate", panelModulateValue, flashingSpeed)
+	healthFlashTween.set_loops(-1)
 
 func _input(event):
 	if event.is_action_pressed("sprint"):
@@ -22,6 +33,7 @@ func _input(event):
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	pollHealth()
 	var currentValue = float(player.sprint_stamina)
 	#var sprintPercentage = (sprintValue/maxSprintValue) * 100
 	var lerpValue = lerp(currentValue, maxSprintValue, delta * bar_consumption_speed)
@@ -29,6 +41,16 @@ func _process(delta: float) -> void:
 	if currentValue < 0.01:
 		currentValue = 0;
 		progress_bar.value = 0
+
+func pollHealth() -> void:
+	if playerHealth < criticalHealthThreshhold:
+		damageEffectPanel.visible = true
+		healthFlashTween.play()
+	else:
+		damageEffectPanel.modulate = Color(0,0,0,0)
+		healthFlashTween.stop()
+		
+		
 
 	
 func showBar() -> void:
@@ -40,16 +62,16 @@ func showBar() -> void:
 	progress_bar.modulate.a = 0
 	progress_bar.custom_minimum_size = Vector2(0, 0)
 	
-	reset_tween()
-	tween.set_parallel(true)
-	tween.tween_property(progress_bar, "modulate", original_transparency, 0.5)
-	tween.tween_property(progress_bar, "custom_minimum_size", original_width, 0.2).set_trans(Tween.TRANS_CUBIC)
+	sprint_tween = reset_tween(sprint_tween)
+	sprint_tween.set_parallel(true)
+	sprint_tween.tween_property(progress_bar, "modulate", original_transparency, 0.5)
+	sprint_tween.tween_property(progress_bar, "custom_minimum_size", original_width, 0.2).set_trans(Tween.TRANS_CUBIC)
 	
 
 func hideBar() -> void:
 	progress_bar.visible = false
 
-func reset_tween() -> void:
+func reset_tween(tween : Tween) -> Tween:
 	if tween:
 		tween.kill()
-	tween = create_tween()
+	return create_tween()
