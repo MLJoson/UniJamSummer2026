@@ -5,14 +5,17 @@
 [ext_resource type="PackedScene" uid="uid://cm5jiq13druqw" path="res://Scenes/pause_manager.tscn" id="3_y8j3f"]
 [ext_resource type="PackedScene" uid="uid://cmtag4s4bxyh2" path="res://Scenes/TestingBuilds/HudTest.tscn" id="4_vrobk"]
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_fk05a"]
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_vrobk"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
 
-[sub_resource type="Sky" id="Sky_x4sgb"]
-sky_material = SubResource("ProceduralSkyMaterial_fk05a")
+[sub_resource type="Sky" id="Sky_g10ho"]
+sky_material = SubResource("ProceduralSkyMaterial_vrobk")
 
-[sub_resource type="Environment" id="Environment_fk05a"]
+[sub_resource type="Environment" id="Environment_rf4e0"]
 background_mode = 2
-sky = SubResource("Sky_x4sgb")
+sky = SubResource("Sky_g10ho")
+tonemap_mode = 2
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_3c1sc"]
 size = Vector3(50, 0.01, 50)
@@ -25,8 +28,8 @@ size = Vector2(50, 50)
 
 [node name="PlayerMovement" type="Node3D" unique_id=1752000256]
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1120282498]
-environment = SubResource("Environment_fk05a")
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1283699281]
+environment = SubResource("Environment_rf4e0")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1911935457]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.35608864, 31.218174, 0)

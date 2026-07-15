@@ -52,6 +52,14 @@ debug_shape_custom_color = Color(1, 0, 0, 1)
 wait_time = 3.0
 one_shot = true
 
+[node name="StunTimer" type="Timer" parent="." unique_id=2065020743]
+one_shot = true
+
+[node name="ChargeWindupTimer" type="Timer" parent="." unique_id=1883125887]
+one_shot = true
+
 [connection signal="body_entered" from="PlayerDetection" to="PlayerDetection" method="_on_body_entered"]
 [connection signal="body_exited" from="PlayerDetection" to="PlayerDetection" method="_on_body_exited"]
 [connection signal="lostSightOfPlayer" from="PlayerDetection" to="." method="_on_player_detection_lost_sight_of_player"]
+[connection signal="timeout" from="StunTimer" to="." method="_on_stun_timer_timeout"]
+[connection signal="timeout" from="ChargeWindupTimer" to="." method="_on_charge_windup_timer_timeout"]
