@@ -2,8 +2,11 @@ extends CharacterBody3D
 
 @onready var navigation_agent: NavigationAgent3D = $NavigationAgent3D
 @onready var player_detection = $PlayerDetection
+@onready var player_detection_close = $PlayerDetectionClose
+@onready var player_detection_far = $PlayerDetectionFar
 @onready var player = get_tree().get_first_node_in_group("Player")
 @onready var chase_transition_timer = $ChaseTransitionTimer
+@onready var player_detection_timer = $PlayerDetectionTimer
 @onready var charge_timer = $ChargeWindupTimer
 @onready var stun_timer = $StunTimer
 
@@ -26,6 +29,7 @@ var charge_destination : Vector3
 var charge_direction : Vector3
 
 var currentSpeed = defaultMaxSpeed
+var isDetecting := false
 var isTransitioningMovementStates: bool = false
 
 var state = WONDER
@@ -37,19 +41,32 @@ enum {
 	CHARGE,
 	STUN,
 }
-
+func _ready():
+	print(player_detection)
+	print(player_detection_close)
+	print(player_detection_far)
+	
 func _physics_process(delta: float) -> void:
 	look_at(global_position + velocity) # makes minotaur look where it's walking
 	
-	if player: # set state to chase if player is visible
-		if player_detection.canSeePlayer == true:
-			if player_detection.canSeePlayer:
-				if player_detection.canSeePlayer:
-					if state == WONDER:
-						if global_position.distance_to(player.global_position) > 8:
-							start_charge()
-						else:
-							state = CHASE
+	if player:
+		#far detection starts a timer
+		if player_detection_far.canSeePlayer:
+			if !isDetecting:
+				player_detection_timer.start()
+				isDetecting = true
+		else:
+			player_detection_timer.stop()
+			isDetecting = false
+		#close or normal detection is immediate
+		if player_detection.canSeePlayer or player_detection_close.canSeePlayer:
+			player_detection_timer.stop()
+			isDetecting = false
+			if state == WONDER:
+				if global_position.distance_to(player.global_position) > 8:
+					start_charge()
+				else:
+					state = CHASE
 	
 	match state:
 		CHASE:
@@ -104,9 +121,12 @@ func set_wonder_position(): # choses a random point to walk towards near the pla
 
 # ends chase state if player is out of sight for long enough
 func _on_player_detection_lost_sight_of_player() -> void:
+	player_detection_timer.stop()
+	isDetecting = false
 	chase_transition_timer.start()
 	await chase_transition_timer.timeout
-	state = WONDER
+	if state != STUN and state != CHARGE:
+		state = WONDER
 
 #starts charge
 func start_charge():
@@ -132,3 +152,11 @@ func _on_stun_timer_timeout() -> void:
 		state = CHASE
 	else:
 		state = WONDER
+
+
+func _on_player_detection_timer_timeout() -> void:
+	isDetecting = false
+	if global_position.distance_to(player.global_position) > 8:
+		start_charge()
+	else:
+		state = CHASE
