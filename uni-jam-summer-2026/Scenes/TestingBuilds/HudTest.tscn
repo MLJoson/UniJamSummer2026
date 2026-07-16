@@ -1,0 +1,59 @@
+[gd_scene format=3 uid="uid://cmtag4s4bxyh2"]
+
+[ext_resource type="Script" uid="uid://drx62ftpu5tlo" path="res://Scenes/TestingBuilds/HudManager.gd" id="1_q4ill"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q4ill"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4lela"]
+bg_color = Color(1, 1, 1, 1)
+
+[node name="HUD" type="Control" unique_id=1288191022 node_paths=PackedStringArray("progress_bar")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("1_q4ill")
+maxSprintValue = 100.0
+progress_bar = NodePath("VBoxContainer/ProgressBar")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1920439639]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -200.0
+offset_top = -40.0
+offset_right = 200.0
+grow_horizontal = 2
+grow_vertical = 0
+pivot_offset = Vector2(200, 0)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=124230799]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="TextureRect2" type="TextureRect" parent="VBoxContainer/HBoxContainer" unique_id=2082017773]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/HBoxContainer" unique_id=302805911]
+layout_mode = 2
+
+[node name="TextureRect3" type="TextureRect" parent="VBoxContainer/HBoxContainer" unique_id=850781120]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="ProgressBar" type="ProgressBar" parent="VBoxContainer" unique_id=603457237]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/background = SubResource("StyleBoxFlat_q4ill")
+theme_override_styles/fill = SubResource("StyleBoxFlat_4lela")
+value = 100.0
+show_percentage = false
