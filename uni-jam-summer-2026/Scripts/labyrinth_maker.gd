@@ -13,7 +13,7 @@ func _ready() -> void:
 	#this makes it only run when you start the game, not in-editor
 	if not Engine.is_editor_hint(): 
 		generate()
-		$Player.position = Vector3i(start_pos.x * 2, 0, start_pos.y * 2)
+		$Player.position = Vector3i(start_pos.x * 2, 2, start_pos.y * 2)
 
 #generates everything relating to the labyrinth
 func generate() -> void:

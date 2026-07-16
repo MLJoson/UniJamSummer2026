@@ -24,4 +24,16 @@ light_energy = 7.13
 omni_range = 1722.752
 
 [node name="Player" parent="." unique_id=381315849 instance=ExtResource("3_qakg5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24, 0, 58)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24, 100, 58)
+
+[node name="Floor" type="CSGBox3D" parent="." unique_id=2098801952]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 96.63, 0.5, 104.645)
+use_collision = true
+size = Vector3(238.16455, 1, 247.71619)
+
+[node name="Floor2" type="CSGBox3D" parent="." unique_id=1098125243]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 96.63, -10, 104.645)
+use_collision = true
+size = Vector3(238.16455, 1, 247.71619)
+
+[editable path="Player"]
