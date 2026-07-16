@@ -19,14 +19,49 @@ func _ready() -> void:
 func generate() -> void:
 	delete_exisiting_tiles()
 	create_base_tiles()
+	create_spawn()
 	generate_pathing()
+	generate_special_rooms()
+
+func generate_special_rooms() -> void:
+	#room 1
+	while true:
+		var rand = Vector3i(randi_range(start_pos.x + 2, size.x - 1), 0, randi_range(start_pos.y + 2, size.y - 1))
+		if $GridMap.get_cell_item(rand) == -1:
+			$GridMap.set_cell_item(rand, 1)
+			$GridMap.set_cell_item(Vector3i(rand.x, 1, rand.z), 1)
+			break
+
+	#room 2
+	while true:
+			var rand = Vector3i(randi_range(1, start_pos.x - 1), 0, randi_range(start_pos.y + 2, size.y - 1))
+			if $GridMap.get_cell_item(rand) == -1:
+				$GridMap.set_cell_item(rand, 1)
+				$GridMap.set_cell_item(Vector3i(rand.x, 1, rand.z), 1)
+				break
+
+	#room 3
+	while true:
+			var rand = Vector3i(randi_range(start_pos.x + 2, size.x - 1), 0, randi_range(1, start_pos.y - 1))
+			if $GridMap.get_cell_item(rand) == -1:
+				$GridMap.set_cell_item(rand, 1)
+				$GridMap.set_cell_item(Vector3i(rand.x, 1, rand.z), 1)
+				break
+
+#generates the starting "spawn" square
+func create_spawn() -> void:
+	start_pos = size / 2
+	$GridMap.set_cell_item(Vector3i(start_pos.x, 0, start_pos.y), -1)
+	$GridMap.set_cell_item(Vector3i(start_pos.x, 1, start_pos.y), -1)
+	$GridMap.set_cell_item(Vector3i(start_pos.x + 1, 0, start_pos.y), -1)
+	$GridMap.set_cell_item(Vector3i(start_pos.x + 1, 1, start_pos.y), -1)
+	$GridMap.set_cell_item(Vector3i(start_pos.x, 0, start_pos.y + 1), -1)
+	$GridMap.set_cell_item(Vector3i(start_pos.x, 1, start_pos.y + 1), -1)
+	$GridMap.set_cell_item(Vector3i(start_pos.x + 1, 0, start_pos.y + 1), -1)
+	$GridMap.set_cell_item(Vector3i(start_pos.x + 1, 1, start_pos.y + 1), -1)
 
 #generates the pathing of the labyrinth - eg. which rooms are empty/filled
 func generate_pathing() -> void:
-	start_pos = Vector2i(randi_range(1, size.x - 1), randi_range(1, size.y - 1))
-	print(start_pos)
-	$GridMap.set_cell_item(Vector3i(start_pos.x, 0, start_pos.y), -1)
-	$GridMap.set_cell_item(Vector3i(start_pos.x, 1, start_pos.y), -1)
 	var cur_pos = start_pos
 	var flag = true
 	var movement_stack = []
