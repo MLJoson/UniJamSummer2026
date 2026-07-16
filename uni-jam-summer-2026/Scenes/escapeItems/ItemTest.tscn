@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://bvil6hglujv5g"]
 
+[ext_resource type="PackedScene" uid="uid://qoasrymsiy1x" path="res://Scenes/escapeItems/pedestal/pedestal.tscn" id="1_6wrjd"]
 [ext_resource type="PackedScene" uid="uid://bpqvb43q6v5oy" path="res://Scenes/player.tscn" id="2_rqw8d"]
 [ext_resource type="PackedScene" uid="uid://b32oc3s8cvjow" path="res://Scenes/escapeItems/feather/Feather.tscn" id="3_2fbnj"]
 [ext_resource type="PackedScene" uid="uid://cnnyatoaxdx3h" path="res://Scenes/escapeItems/candle/Candle.tscn" id="3_6wrjd"]
@@ -47,8 +48,11 @@ mesh = SubResource("PlaneMesh_mw5t6")
 [node name="Player" parent="." unique_id=381315849 instance=ExtResource("2_rqw8d")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.056459427, 3.4945784, 0)
 
-[node name="Node3D" parent="." unique_id=1346358949 instance=ExtResource("3_2fbnj")]
-transform = Transform3D(0.9659258, -0.25881904, 0, 0.25881904, 0.9659258, 0, 0, 0, 1, -10.560318, 1.4927714, 0)
-
 [node name="Node3D2" parent="." unique_id=960145551 instance=ExtResource("3_6wrjd")]
 transform = Transform3D(0.19318517, -0.05176381, 0, 0.05176381, 0.19318517, 0, 0, 0, 0.2, -13, 1.4801717, -9)
+
+[node name="Node3D3" parent="." unique_id=2145777080 instance=ExtResource("1_6wrjd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.491172, 0.4157374, -0.107198)
+
+[node name="Node3D" parent="." unique_id=1346358949 instance=ExtResource("3_2fbnj")]
+transform = Transform3D(0.9659258, -0.25881904, 0, 0.25881904, 0.9659258, 0, 0, 0, 1, -10.482378, 1.4495678, 0)
