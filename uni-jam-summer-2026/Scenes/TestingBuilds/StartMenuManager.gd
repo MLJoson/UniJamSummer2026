@@ -11,8 +11,8 @@ func _on_start_pressed() -> void:
 	#start_scene.instantiate()
 	#var sceneInstance = start_scene.instantiate()
 	Transition.fade_in()
-	get_tree().change_scene_to_packed(start_scene)
-	Transition.fade_out()
+	get_tree().change_scene_to_file("res://Scenes/opening.tscn")
+	#get_tree().change_scene_to_packed(start_scene)
 
 
 func _on_start_mouse_entered() -> void:
