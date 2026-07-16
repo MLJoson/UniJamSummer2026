@@ -79,6 +79,12 @@ dialogic_default_action={
 ]
 }
 
+[layer_names]
+
+3d_physics/layer_1="player"
+3d_physics/layer_2="minotaur"
+3d_physics/layer_3="obstacles"
+
 [physics]
 
 3d/physics_engine="Jolt Physics"
