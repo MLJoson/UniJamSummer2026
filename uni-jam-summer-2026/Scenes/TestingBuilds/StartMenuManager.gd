@@ -10,7 +10,9 @@ func _on_exit_pressed() -> void:
 func _on_start_pressed() -> void:
 	#start_scene.instantiate()
 	#var sceneInstance = start_scene.instantiate()
+	Transition.fade_in()
 	get_tree().change_scene_to_packed(start_scene)
+	Transition.fade_out()
 
 
 func _on_start_mouse_entered() -> void:
