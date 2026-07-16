@@ -17,8 +17,8 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-Dialogic="*uid://crxiwx2gj1mdi"
 Transition="*uid://dhey63b4m00vk"
+Dialogic="*uid://crxiwx2gj1mdi"
 
 [dialogic]
 
