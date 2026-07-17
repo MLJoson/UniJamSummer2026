@@ -3,6 +3,10 @@
 [ext_resource type="PackedScene" uid="uid://gayfghun4c2j" path="res://Scenes/minotaur.tscn" id="1_ktymn"]
 [ext_resource type="PackedScene" uid="uid://bpqvb43q6v5oy" path="res://Scenes/player.tscn" id="2_g10ho"]
 [ext_resource type="PackedScene" uid="uid://cm5jiq13druqw" path="res://Scenes/pause_manager.tscn" id="3_ibi4p"]
+[ext_resource type="AudioStream" uid="uid://b26vh4o36cjw4" path="res://Audio/Music/LABYRINTH_background_loop.wav" id="4_10fne"]
+[ext_resource type="AudioStream" uid="uid://lga0e476usu6" path="res://Audio/Music/LABYRINTH_action_loop.wav" id="5_cc810"]
+[ext_resource type="AudioStream" uid="uid://dpnaor7v8f13y" path="res://Audio/Music/LABYRINTH_tension_loop.wav" id="6_wfa0w"]
+[ext_resource type="Script" uid="uid://d1xcr2ncydspk" path="res://Scripts/music_manager.gd" id="7_10fne"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_rx0hy"]
 vertices = PackedVector3Array(-8.702148, 0.01999998, -8.865742, -7.4521484, 0.01999998, -9.115742, -7.4521484, 0.01999998, -18.865742, -21.952148, 0.01999998, -18.865742, -21.952148, 0.01999998, -7.6157417, -8.702148, 0.01999998, -7.3657417, -6.4521484, 0.01999998, 2.6342583, -4.9521484, 0.01999998, 2.6342583, -4.9521484, 0.01999998, 1.8842583, -4.2021484, 0.01999998, 1.6342583, -4.2021484, 0.01999998, 0.13425827, -0.95214844, 0.01999998, -1.3657417, 0.047851563, 0.01999998, -1.6157417, 0.29785156, 0.01999998, -3.1157417, -6.4521484, 0.01999998, -8.865742, -2.9521484, 0.01999998, -1.8657417, 1.2978516, 0.01999998, -3.3657417, 1.2978516, 0.01999998, -18.865742, -3.4521484, 0.01999998, -1.3657417, 3.5478516, 0.01999998, -2.3657417, 3.7978516, 0.01999998, -1.1157417, 12.047852, 0.01999998, -0.8657417, 12.047852, 0.01999998, -18.865742, -21.952148, 0.01999998, 10.134258, -8.702148, 0.01999998, 9.884258, 2.0478516, 0.01999998, -0.11574173, 4.7978516, 0.01999998, 1.6342583, 5.0478516, 0.01999998, 3.3842583, 8.047852, 0.01999998, 4.1342583, -1.9521484, 0.01999998, 1.6342583, 9.797852, 0.01999998, 4.3842583, 9.797852, 0.01999998, 9.634258, 12.047852, 0.01999998, 10.134258, 3.2978516, 0.01999998, -0.11574173, -6.4521484, 0.01999998, 7.3842583, -4.9521484, 0.01999998, 7.3842583, -4.7021484, 0.01999998, 6.1342583, -4.7021484, 0.01999998, 3.8842583, 5.0478516, 0.01999998, 6.3842583, 4.7978516, 0.01999998, 8.384258, 7.5478516, 0.01999998, 9.884258, 7.5478516, 0.01999998, 4.3842583, 4.7978516, 0.01999998, 3.8842583, 1.5478516, 0.01999998, 8.384258, 1.5478516, 0.01999998, 9.884258, -4.7021484, 0.01999998, 8.384258, -6.4521484, 0.01999998, 11.384258, -0.70214844, 0.01999998, 10.134258, 0.79785156, 0.01999998, 23.384258, 1.0478516, 0.01999998, 11.634258, -0.45214844, 0.01999998, 11.634258, -7.7021484, 0.01999998, 11.634258, -7.7021484, 0.01999998, 23.384258, 9.547852, 0.01999998, 11.634258, 12.047852, 0.01999998, 23.384258, -8.702148, 0.01999998, 11.384258, -21.952148, 0.01999998, 23.384258)
@@ -21,6 +25,15 @@ background_mode = 2
 sky = SubResource("Sky_he5ta")
 tonemap_mode = 2
 
+[sub_resource type="AudioStreamSynchronized" id="AudioStreamSynchronized_wfa0w"]
+stream_count = 3
+stream_0/stream = ExtResource("4_10fne")
+stream_0/volume = 0.0
+stream_1/stream = ExtResource("5_cc810")
+stream_1/volume = 0.0
+stream_2/stream = ExtResource("6_wfa0w")
+stream_2/volume = 0.0
+
 [node name="NavigationRegion3D" type="NavigationRegion3D" unique_id=750671737]
 navigation_mesh = SubResource("NavigationMesh_rx0hy")
 
@@ -36,8 +49,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.976074, -0.5, 2.3688965)
 use_collision = true
 size = Vector3(34.95215, 1, 43.16455)
 
-[node name="Minotaur" parent="." unique_id=973448386 instance=ExtResource("1_ktymn")]
+[node name="Minotaur" parent="." unique_id=973448386 node_paths=PackedStringArray("music_manager") instance=ExtResource("1_ktymn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.40427, 0, 0)
+music_manager = NodePath("../MusicManager")
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="." unique_id=359043481]
 transform = Transform3D(8.695143, 0, 0, 0, 5.395395, 0, 0, 0, 1, 0, 2.6479511, 2.734899)
@@ -95,3 +109,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3728733, -13.59959)
 
 [node name="PauseManager" parent="." unique_id=841703603 instance=ExtResource("3_ibi4p")]
 visible = false
+
+[node name="MusicManager" type="AudioStreamPlayer" parent="." unique_id=399395047]
+stream = SubResource("AudioStreamSynchronized_wfa0w")
+autoplay = true
+bus = &"Music"
+script = ExtResource("7_10fne")

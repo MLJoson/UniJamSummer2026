@@ -56,17 +56,20 @@ one_shot = true
 [node name="PlayerDetectionTimer" type="Timer" parent="." unique_id=246783198]
 
 [node name="PlayerDetection" parent="." unique_id=974627455 instance=ExtResource("3_ia38g")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 1.733598, 0)
 
 [node name="CollisionShape3D" parent="PlayerDetection" index="0" unique_id=1402076048]
 shape = SubResource("CylinderShape3D_qckco")
 
 [node name="PlayerDetectionClose" parent="." unique_id=1981509599 instance=ExtResource("3_ia38g")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 1.4871573, 0)
 fovDegrees = 180
 
 [node name="CollisionShape3D" parent="PlayerDetectionClose" index="0" unique_id=1402076048]
 shape = SubResource("CylinderShape3D_ia38g")
 
 [node name="PlayerDetectionFar" parent="." unique_id=1417481518 instance=ExtResource("3_ia38g")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 1.6069484, 0)
 
 [node name="CollisionShape3D" parent="PlayerDetectionFar" index="0" unique_id=1402076048]
 shape = SubResource("CylinderShape3D_axg2i")
