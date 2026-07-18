@@ -42,6 +42,7 @@ func _ready():
 	sprint_timer.wait_time = 0.01
 	sprint_regen_timer.wait_time = 4
 	footsteps.volume_db = -50.0
+	breathing.volume_db = -50.0
 	fade_anim_player.play("fade_in")
 
 func _unhandled_input(event):
@@ -59,8 +60,6 @@ func _process(_delta: float) -> void:
 		if sprint_stamina >= 100:
 			regen_stamina = false
 			
-	#if Input.is_action_just_pressed("pause"):
-		#$CanvasLayer/PauseMenu.enter_pause();
 
 func _physics_process(delta):
 	
@@ -79,8 +78,8 @@ func _physics_process(delta):
 			regen_stamina = false
 			speed = SPRINT_SPEED
 			sprint_stamina += -0.25
-		#elif Input.is_action_pressed("speed speed"):
-			#speed = 20.0
+			if sprint_stamina <= 5:
+				breathing.play()
 		elif Input.is_action_just_released("sprint"):
 			sprint_regen_timer.start()
 		else: 
@@ -94,6 +93,8 @@ func _physics_process(delta):
 		if is_walking:
 			if !footsteps.playing:
 				footsteps.play()
+			var horizontal_speed = Vector2(velocity.x, velocity.z).length()
+			footsteps.pitch_scale = lerp(0.9, 1.5, horizontal_speed/SPRINT_SPEED)
 		else:
 			if footsteps.playing:
 				footsteps.stop()

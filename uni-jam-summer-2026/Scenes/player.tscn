@@ -1,6 +1,8 @@
 [gd_scene format=3 uid="uid://bpqvb43q6v5oy"]
 
 [ext_resource type="Script" uid="uid://bbtd1fgmnv6is" path="res://Scripts/player.gd" id="1_v0iea"]
+[ext_resource type="AudioStream" uid="uid://657n65dad0gk" path="res://Assets/DefaultSounds/Walking.wav" id="2_cvnsp"]
+[ext_resource type="AudioStream" uid="uid://shbxxqbom0l6" path="res://Assets/DefaultSounds/HeavyBreathing.wav" id="3_6t5aa"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_cvnsp"]
 
@@ -105,6 +107,10 @@ color = Color(0, 0, 0, 1)
 libraries/ = SubResource("AnimationLibrary_x3wgy")
 
 [node name="Footsteps" type="AudioStreamPlayer3D" parent="." unique_id=2017120344]
+stream = ExtResource("2_cvnsp")
+
+[node name="Breathing" type="AudioStreamPlayer3D" parent="." unique_id=1816304400]
+stream = ExtResource("3_6t5aa")
 
 [connection signal="timeout" from="sprint_reduce_timer" to="." method="_on_sprint_reduce_timer_timeout"]
 [connection signal="timeout" from="sprint_regen_timer" to="." method="_on_sprint_regen_timer_timeout"]

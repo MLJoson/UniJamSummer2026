@@ -3,6 +3,8 @@
 [ext_resource type="Script" uid="uid://b367xj4i320rw" path="res://Scripts/labyrinth_maker.gd" id="1_g3yav"]
 [ext_resource type="MeshLibrary" uid="uid://oa3n7b3548fk" path="res://Scenes/labyrinth-stuff/meshlibrary.tres" id="2_qakg5"]
 [ext_resource type="PackedScene" uid="uid://bpqvb43q6v5oy" path="res://Scenes/player.tscn" id="3_qakg5"]
+[ext_resource type="PackedScene" uid="uid://cm5jiq13druqw" path="res://Scenes/pause_manager.tscn" id="5_ci5qy"]
+[ext_resource type="PackedScene" uid="uid://cmtag4s4bxyh2" path="res://Scenes/TestingBuilds/HudTest.tscn" id="5_nbgq6"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_qakg5"]
 noise_type = 5
@@ -59,5 +61,13 @@ size = Vector3(238.16455, 1, 247.71619)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 96.63, -10, 104.645)
 use_collision = true
 size = Vector3(238.16455, 1, 247.71619)
+
+[node name="HUD" parent="." unique_id=1288191022 node_paths=PackedStringArray("player") instance=ExtResource("5_nbgq6")]
+maxSprintValue = 100.0
+player = NodePath("../Player")
+playerHealth = 100.0
+
+[node name="PauseManager" parent="." unique_id=841703603 instance=ExtResource("5_ci5qy")]
+visible = false
 
 [editable path="Player"]

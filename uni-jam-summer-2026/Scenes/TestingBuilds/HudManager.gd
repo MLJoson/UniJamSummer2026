@@ -15,11 +15,11 @@ var panelModulateValue
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	progress_bar.max_value = maxSprintValue
+	progress_bar.value = player.sprint_stamina
 	if player == null:
 		push_error("Player must be assigned to HUD in inspector")
 	progress_bar.visible = false
-
-
 	panelModulateValue = damageEffectPanel.modulate
 	healthFlashTween.tween_property(damageEffectPanel, "modulate", Color(1.0, 1.0, 1.0, 1.0), flashingSpeed)
 	healthFlashTween.tween_property(damageEffectPanel, "modulate", panelModulateValue, flashingSpeed)
@@ -36,8 +36,9 @@ func _process(delta: float) -> void:
 	pollHealth()
 	var currentValue = float(player.sprint_stamina)
 	#var sprintPercentage = (sprintValue/maxSprintValue) * 100
-	var lerpValue = lerp(currentValue, maxSprintValue, delta * bar_consumption_speed)
+	var lerpValue = lerp(progress_bar.value, currentValue, delta * bar_consumption_speed)
 	progress_bar.value = lerpValue
+	print(progress_bar.value)
 	if currentValue < 0.01:
 		currentValue = 0;
 		progress_bar.value = 0
