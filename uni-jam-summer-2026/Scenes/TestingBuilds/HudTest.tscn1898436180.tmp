@@ -1,0 +1,80 @@
+[gd_scene format=3 uid="uid://cmtag4s4bxyh2"]
+
+[ext_resource type="Script" uid="uid://drx62ftpu5tlo" path="res://Scenes/TestingBuilds/HudManager.gd" id="1_q4ill"]
+[ext_resource type="Theme" uid="uid://c76yokjbddobk" path="res://Materials/damage_gradient.tres" id="2_4lela"]
+
+[sub_resource type="Gradient" id="Gradient_0c25f"]
+offsets = PackedFloat32Array(0, 0.15061297, 0.36777583, 0.49912435, 0.72154117, 0.9929947)
+colors = PackedColorArray(0.19489288, 1.8500258e-07, 3.6098065e-08, 1, 0.9740288, 5.96782e-09, 1.1644516e-09, 0.2182163, 1, 0, 0, 0.19215687, 0.77254903, 0.32156864, 0.54509807, 0.19215687, 0.88235295, 0, 0, 0.21568628, 0.19607843, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_nclx1"]
+gradient = SubResource("Gradient_0c25f")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_dwqdb"]
+texture = SubResource("GradientTexture2D_nclx1")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q4ill"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4lela"]
+bg_color = Color(1, 1, 1, 1)
+
+[node name="HUD" type="Control" unique_id=1288191022 node_paths=PackedStringArray("progress_bar")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("1_q4ill")
+progress_bar = NodePath("VBoxContainer/ProgressBar")
+
+[node name="DamageEffectPanel" type="Panel" parent="." unique_id=1309135019]
+modulate = Color(1, 1, 1, 0.5647059)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_4lela")
+theme_override_styles/panel = SubResource("StyleBoxTexture_dwqdb")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1920439639]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -200.0
+offset_top = -40.0
+offset_right = 200.0
+grow_horizontal = 2
+grow_vertical = 0
+pivot_offset = Vector2(200, 0)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=124230799]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="TextureRect2" type="TextureRect" parent="VBoxContainer/HBoxContainer" unique_id=2082017773]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/HBoxContainer" unique_id=302805911]
+layout_mode = 2
+
+[node name="TextureRect3" type="TextureRect" parent="VBoxContainer/HBoxContainer" unique_id=850781120]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="ProgressBar" type="ProgressBar" parent="VBoxContainer" unique_id=603457237]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/background = SubResource("StyleBoxFlat_q4ill")
+theme_override_styles/fill = SubResource("StyleBoxFlat_4lela")
+value = 100.0
+show_percentage = false
