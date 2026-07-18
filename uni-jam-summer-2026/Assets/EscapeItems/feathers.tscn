@@ -3,6 +3,5 @@
 [ext_resource type="PackedScene" uid="uid://dm6w7pc2t0sdt" path="res://Assets/EscapeItems/feather.blend" id="1_htrfv"]
 
 [node name="Node3D" type="Node3D" unique_id=1239145926]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
 
 [node name="feather" parent="." unique_id=1236723067 instance=ExtResource("1_htrfv")]

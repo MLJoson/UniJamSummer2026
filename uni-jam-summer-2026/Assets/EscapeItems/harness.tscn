@@ -3,7 +3,6 @@
 [ext_resource type="PackedScene" uid="uid://cc3whexwne75k" path="res://Assets/EscapeItems/harness.blend" id="1_e6bro"]
 
 [node name="Node3D" type="Node3D" unique_id=158246770]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
 
 [node name="harness" parent="." unique_id=360722019 instance=ExtResource("1_e6bro")]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
