@@ -4,9 +4,33 @@
 [ext_resource type="MeshLibrary" uid="uid://oa3n7b3548fk" path="res://Scenes/labyrinth-stuff/meshlibrary.tres" id="2_qakg5"]
 [ext_resource type="PackedScene" uid="uid://bpqvb43q6v5oy" path="res://Scenes/player.tscn" id="3_qakg5"]
 
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_qakg5"]
+noise_type = 5
+domain_warp_enabled = true
+domain_warp_type = 2
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_1ygjs"]
+noise = SubResource("FastNoiseLite_qakg5")
+seamless = true
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ci5qy"]
+sky_top_color = Color(0.017732391, 0.017732391, 0.01773239, 1)
+sky_horizon_color = Color(0.26119208, 0.2669171, 0.27837908, 1)
+sky_cover = SubResource("NoiseTexture2D_1ygjs")
+
+[sub_resource type="Sky" id="Sky_nbgq6"]
+sky_material = SubResource("ProceduralSkyMaterial_ci5qy")
+
+[sub_resource type="Environment" id="Environment_7urpf"]
+background_mode = 2
+sky = SubResource("Sky_nbgq6")
+
 [node name="Labyrinth Maker" type="Node3D" unique_id=1889164442]
 script = ExtResource("1_g3yav")
 size = Vector2i(50, 50)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1056400608]
+environment = SubResource("Environment_7urpf")
 
 [node name="GridMap" type="GridMap" parent="." unique_id=1821637299]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)

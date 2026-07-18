@@ -9,5 +9,6 @@ func _ready() -> void:
 	await Dialogic.timeline_ended
 	Transition.fade_in()
 	# Change to main gameplay loop
-	get_tree().change_scene_to_packed(start_scene)
+	#get_tree().change_scene_to_packed(start_scene)
+	get_tree().change_scene_to_file("res://Scenes/labyrinth-stuff/labyrinth_maker.tscn")
 	Transition.fade_out()
