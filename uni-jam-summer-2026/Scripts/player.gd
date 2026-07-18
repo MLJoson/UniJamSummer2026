@@ -27,7 +27,7 @@ var gravity = 9.8
 @onready var footsteps: AudioStreamPlayer3D = $Footsteps
 @onready var breathing: AudioStreamPlayer3D = $Breathing
 @onready var fade_anim_player : AnimationPlayer = $CanvasLayer/Control/AnimationPlayer
-@onready var eyes : Sprite3D = $Eyes
+
 
 @onready var sprint_timer = $sprint_reduce_timer
 @onready var sprint_regen_timer = $sprint_regen_timer

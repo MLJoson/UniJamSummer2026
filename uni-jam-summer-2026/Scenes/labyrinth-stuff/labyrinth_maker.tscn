@@ -27,6 +27,9 @@ sky_material = SubResource("ProceduralSkyMaterial_ci5qy")
 background_mode = 2
 sky = SubResource("Sky_nbgq6")
 
+[sub_resource type="NavigationMesh" id="NavigationMesh_ci5qy"]
+cell_height = 0.01
+
 [node name="Labyrinth Maker" type="Node3D" unique_id=1889164442]
 script = ExtResource("1_g3yav")
 size = Vector2i(50, 50)
@@ -55,7 +58,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24, 100, 58)
 [node name="Floor" type="CSGBox3D" parent="." unique_id=2098801952]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 96.63, 0.5, 104.645)
 use_collision = true
-size = Vector3(238.16455, 1, 247.71619)
+size = Vector3(238.165, 0, 247.716)
 
 [node name="Floor2" type="CSGBox3D" parent="." unique_id=1098125243]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 96.63, -10, 104.645)
@@ -69,5 +72,14 @@ playerHealth = 100.0
 
 [node name="PauseManager" parent="." unique_id=841703603 instance=ExtResource("5_ci5qy")]
 visible = false
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="." unique_id=106738397]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.62417, 9.536743e-07, 16.474709)
+navigation_mesh = SubResource("NavigationMesh_ci5qy")
+
+[node name="Floor" type="CSGBox3D" parent="NavigationRegion3D" unique_id=1204613191]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 96.63, 0.5, 104.645)
+use_collision = true
+size = Vector3(238.165, 0, 247.716)
 
 [editable path="Player"]
