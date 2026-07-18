@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://bafjah8n7ssoc"
-path="res://.godot/imported/pedestal.blend-e93ec650b4658a25c854a4a3d610a89b.scn"
+uid="uid://c81tu71ov21jb"
+path="res://.godot/imported/candle.blend-190c8d2ad36125b5e26a551f9cac16dd.scn"
 
 [deps]
 
-source_file="res://Scenes/escapeItems/pedestal/pedestal.blend"
-dest_files=["res://.godot/imported/pedestal.blend-e93ec650b4658a25c854a4a3d610a89b.scn"]
+source_file="res://Assets/EscapeItems/candle.blend"
+dest_files=["res://.godot/imported/candle.blend-190c8d2ad36125b5e26a551f9cac16dd.scn"]
 
 [params]
 

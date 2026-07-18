@@ -2,6 +2,7 @@
 extends Node3D
 
 @export_tool_button("Generate") var start = generate
+
 @export var size := Vector2i(10, 10) :
 	set(value):
 		size.x = clamp(value.x, 0, 100)
@@ -9,11 +10,18 @@ extends Node3D
 
 var start_pos : Vector2i
 
+var itemPos : Array[Vector3i] = []
+var escItems = [
+	preload("res://Assets/EscapeItems/candle.tscn"),
+	preload("res://Assets/EscapeItems/feathers.tscn"),
+	preload("res://Assets/EscapeItems/harness.tscn")]
+
 func _ready() -> void:
 	#this makes it only run when you start the game, not in-editor
 	if not Engine.is_editor_hint(): 
 		generate()
 		$Player.position = Vector3i(start_pos.x * 2, 2, start_pos.y * 2)
+		
 
 #generates everything relating to the labyrinth
 func generate() -> void:
@@ -21,13 +29,17 @@ func generate() -> void:
 	create_base_tiles()
 	create_spawn()
 	generate_pathing()
+	itemPos.clear()
 	generate_special_rooms()
+	clear_items()
+	generate_items()
 
 func generate_special_rooms() -> void:
 	#room 1
 	while true:
 		var rand = Vector3i(randi_range(start_pos.x + 2, size.x - 1), 0, randi_range(start_pos.y + 2, size.y - 1))
 		if $GridMap.get_cell_item(rand) == -1:
+			itemPos.append(rand)
 			$GridMap.set_cell_item(rand, 1)
 			$GridMap.set_cell_item(Vector3i(rand.x, 1, rand.z), 1)
 			break
@@ -36,6 +48,7 @@ func generate_special_rooms() -> void:
 	while true:
 			var rand = Vector3i(randi_range(1, start_pos.x - 1), 0, randi_range(start_pos.y + 2, size.y - 1))
 			if $GridMap.get_cell_item(rand) == -1:
+				itemPos.append(rand)
 				$GridMap.set_cell_item(rand, 1)
 				$GridMap.set_cell_item(Vector3i(rand.x, 1, rand.z), 1)
 				break
@@ -44,6 +57,7 @@ func generate_special_rooms() -> void:
 	while true:
 			var rand = Vector3i(randi_range(start_pos.x + 2, size.x - 1), 0, randi_range(1, start_pos.y - 1))
 			if $GridMap.get_cell_item(rand) == -1:
+				itemPos.append(rand)
 				$GridMap.set_cell_item(rand, 1)
 				$GridMap.set_cell_item(Vector3i(rand.x, 1, rand.z), 1)
 				break
@@ -126,3 +140,15 @@ func create_base_tiles() -> void:
 			$GridMap.set_cell_item(Vector3i(x, 1, z), 0)
 			$GridMap.set_cell_item(Vector3i(x, 0, z), 0)
 			$GridMap.set_cell_item(Vector3i(x, -1, z), 0)
+
+func generate_items() -> void:
+	for x in range(itemPos.size()):
+		var item = escItems[x].instantiate()
+		add_child(item)
+		item.global_position = $GridMap.to_global($GridMap.map_to_local(itemPos[x]))
+
+func clear_items():
+	print("called")
+	for child in get_children():
+		if child.scene_file_path.begins_with("res://Assets/EscapeItems/"):
+			child.free()
