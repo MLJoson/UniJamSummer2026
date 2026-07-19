@@ -9,7 +9,7 @@ size = Vector3(0.07635498, 0.39367676, 1)
 [node name="Node3D" type="Node3D" unique_id=158246770]
 
 [node name="harness" parent="." unique_id=360722019 instance=ExtResource("1_e6bro")]
-transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
 script = ExtResource("2_bp86i")
 
 [node name="Area3D" type="Area3D" parent="harness" unique_id=1952024645]

@@ -44,6 +44,7 @@ func _ready():
 	footsteps.volume_db = -50.0
 	breathing.volume_db = -50.0
 	fade_anim_player.play("fade_in")
+	eventBUS.allItemsCollected.connect(escape)
 
 func _unhandled_input(event):
 	if can_accept_input and event is InputEventMouseMotion:
@@ -133,3 +134,6 @@ func _on_sprint_reduce_timer_timeout() -> void:
 
 func _on_sprint_regen_timer_timeout() -> void:
 	regen_stamina = true
+
+func escape():
+	velocity.y = JUMP_VELOCITY*7
