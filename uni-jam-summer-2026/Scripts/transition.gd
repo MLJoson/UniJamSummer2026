@@ -10,7 +10,7 @@ func fade_in():
 
 
 func _on_ready() -> void:
-	eventBUS.changeColor.connect(color_changed)
+	eventBUS.colorChange.connect(color_changed)
 	
 func color_changed(newColor):
 	$ColorRect.color = newColor

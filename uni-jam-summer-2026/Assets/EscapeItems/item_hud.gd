@@ -22,4 +22,7 @@ func item_collected(item):
 		harness = true
 		if candle and feather and harness:
 			eventBUS.colorChange.emit(Color.WHITE)
+			$CandleHud.visible = false
+			$FeatherHud.visible = false
+			$HarnessHud.visible = false
 			Transition.fade_in()
