@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://4bc0n8kj31gk" path="res://Assets/Minotaur/charge-side.png" id="4_2vrhi"]
 [ext_resource type="Texture2D" uid="uid://d14geocnnskba" path="res://Assets/Minotaur/idle.png" id="5_2vrhi"]
 [ext_resource type="PackedScene" uid="uid://c03vajfonypy8" path="res://Scenes/hitbox.tscn" id="6_m0n7a"]
+[ext_resource type="Script" uid="uid://dyhtfxenpidjk" path="res://Scripts/music_manager.gd" id="7_3gnlo"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_s0mwf"]
 
@@ -341,6 +342,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.2346003, 0)
 [node name="CollisionShape3D" parent="Hitbox" index="0" unique_id=957386594]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.15360284, 0)
 shape = SubResource("CapsuleShape3D_3gnlo")
+
+[node name="MusicManager" type="AudioStreamPlayer" parent="." unique_id=190340749]
+script = ExtResource("7_3gnlo")
 
 [connection signal="timeout" from="StunTimer" to="." method="_on_stun_timer_timeout"]
 [connection signal="timeout" from="ChargeWindupTimer" to="." method="_on_charge_windup_timer_timeout"]

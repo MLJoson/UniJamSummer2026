@@ -26,6 +26,11 @@ extends CharacterBody3D
 @export var charge_windup := 1.0
 @export var stun_time := 2.0
 
+
+@export_group("Other")
+# Music should probably be handled in a game manager script instead so maybe change later
+@onready var music_manager: AudioStreamPlayer = $MusicManager
+
 #Animation variables
 @onready var front_sprite: AnimatedSprite3D = $ChargeFront
 @onready var side_sprite: AnimatedSprite3D = $ChargeSide
@@ -47,6 +52,11 @@ enum {
 	CHARGE,
 	STUN,
 }
+enum CloseState {
+	ISCLOSE,
+	NOTCLOSE,
+}
+var current_close_state: CloseState = CloseState.NOTCLOSE
 func _ready():
 	idle_sprite.play()
 	front_sprite.play()
@@ -76,7 +86,7 @@ func _physics_process(delta: float) -> void:
 				if global_position.distance_to(player.global_position) > 8:
 					start_charge()
 				else:
-					state = CHASE
+					change_state(CHASE)
 	
 	match state:
 		CHASE:
@@ -96,7 +106,7 @@ func _physics_process(delta: float) -> void:
 			velocity = charge_direction * charge_speed
 			move_and_slide()
 			if global_position.distance_to(charge_destination) < 0.5:
-				state = STUN
+				change_state(STUN)
 				stun_timer.start(stun_time)
 				
 			for i in range(get_slide_collision_count()):
@@ -109,6 +119,34 @@ func _physics_process(delta: float) -> void:
 		STUN:
 			velocity = Vector3.ZERO
 	update_sprite_direction()
+
+# used for changing music
+func change_close_state(new_state: CloseState):
+	if current_close_state == new_state:
+		return
+	current_close_state = new_state
+	if new_state == CloseState.ISCLOSE:
+		music_manager.set_current_track(2)
+	elif state == WONDER:
+		music_manager.set_current_track(0)
+
+func change_state(new_state):
+	if state == new_state:
+		return
+
+	state = new_state
+
+	match state:
+		CHASE:
+			music_manager.set_current_track(1)
+		WONDER:
+			music_manager.set_current_track(0)
+		CHARGE_WINDUP:
+			pass
+		CHARGE:
+			pass
+		STUN:
+			pass
 
 func movement(delta):
 	var destination = navigation_agent.get_next_path_position()
@@ -137,11 +175,11 @@ func _on_player_detection_lost_sight_of_player() -> void:
 	chase_transition_timer.start()
 	await chase_transition_timer.timeout
 	if state != STUN and state != CHARGE:
-		state = WONDER
+		change_state(WONDER)
 
 #starts charge
 func start_charge():
-	state = CHARGE_WINDUP
+	change_state(CHARGE_WINDUP)
 	velocity = Vector3.ZERO
 	charge_direction = -transform.basis.z.normalized()
 	var space = get_world_3d().direct_space_state
@@ -155,14 +193,14 @@ func start_charge():
 	charge_timer.start(charge_windup)
 
 func _on_charge_windup_timer_timeout() -> void:
-	state = CHARGE
+	change_state(CHARGE)
 
 
 func _on_stun_timer_timeout() -> void:
 	if player_detection.canSeePlayer:
-		state = CHASE
+		change_state(CHASE)
 	else:
-		state = WONDER
+		change_state(WONDER)
 
 
 func _on_player_detection_timer_timeout() -> void:
@@ -170,7 +208,7 @@ func _on_player_detection_timer_timeout() -> void:
 	if global_position.distance_to(player.global_position) > 8:
 		start_charge()
 	else:
-		state = CHASE
+		change_state(CHASE)
 
 func update_sprite_direction():
 	if camera == null:
