@@ -1,4 +1,5 @@
-Your newfound wings give you strength
-They lift you high above the clouds
-Freedom at last
-You have escaped the labyrinth
+[style name="EscapeDialogue"]
+[wave]Your newfound wings give you strength.[/wave]
+[wave]They lift you high above the clouds.[/wave]
+[wave]Freedom at last.[/wave]
+[wave]You have escaped [color=red]the labyrinth[/color].[/wave]

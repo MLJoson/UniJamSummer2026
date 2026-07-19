@@ -29,7 +29,7 @@ directories/dtl_directory={
 "opening": "res://Timelines/opening.dtl"
 }
 glossary/default_case_sensitive=true
-layout/style_list=["res://Styles/DefaultDialogue.tres"]
+layout/style_list=["res://Styles/DefaultDialogue.tres", "res://Styles/EscapeDialogue.tres"]
 layout/default_style="res://Styles/DefaultDialogue.tres"
 extensions_folder="res://addons/dialogic_additions"
 text/letter_speed=0.01
