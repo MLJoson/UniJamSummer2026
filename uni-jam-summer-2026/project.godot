@@ -25,6 +25,7 @@ Dialogic="*uid://crxiwx2gj1mdi"
 
 directories/dch_directory={}
 directories/dtl_directory={
+"escape": "res://Timelines/escape.dtl",
 "opening": "res://Timelines/opening.dtl"
 }
 glossary/default_case_sensitive=true

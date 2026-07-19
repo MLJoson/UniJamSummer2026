@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://4p2jf1vngshh"]
+
+[sub_resource type="GDScript" id="GDScript_y3nty"]
+script/source = "extends Control
+
+
+func _on_ready() -> void:
+	Dialogic.start(\"escape\")
+"
+
+[node name="EscapeEnding" type="Node2D" unique_id=597809124]
+
+[node name="Control" type="Control" parent="." unique_id=1793736178]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+script = SubResource("GDScript_y3nty")
+
+[node name="ColorRect" type="ColorRect" parent="Control" unique_id=1238237110]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+
+[connection signal="ready" from="Control" to="Control" method="_on_ready"]

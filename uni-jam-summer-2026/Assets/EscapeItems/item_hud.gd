@@ -10,29 +10,23 @@ func item_collected(item):
 		$CandleHud.modulate = Color("#feff51")
 		candle = true
 		if candle and feather and harness:
-			eventBUS.colorChange.emit(Color.WHITE)
-			eventBUS.allItemsCollected.emit()
-			$CandleHud.visible = false
-			$FeatherHud.visible = false
-			$HarnessHud.visible = false
-			Transition.fade_in()
+			escape()
 	if item == "feather":
 		$FeatherHud.modulate = Color("#feff51")
 		feather = true
 		if candle and feather and harness:
-			eventBUS.colorChange.emit(Color.WHITE)
-			eventBUS.allItemsCollected.emit()
-			$CandleHud.visible = false
-			$FeatherHud.visible = false
-			$HarnessHud.visible = false
-			Transition.fade_in()
+			escape()
 	if item == "harness":
 		$HarnessHud.modulate = Color("#feff51")
 		harness = true
 		if candle and feather and harness:
-			eventBUS.colorChange.emit(Color.WHITE)
-			eventBUS.allItemsCollected.emit()
-			$CandleHud.visible = false
-			$FeatherHud.visible = false
-			$HarnessHud.visible = false
-			Transition.fade_in()
+			escape()
+func escape():
+	eventBUS.colorChange.emit(Color.WHITE)
+	eventBUS.allItemsCollected.emit()
+	$CandleHud.visible = false
+	$FeatherHud.visible = false
+	$HarnessHud.visible = false
+	Transition.fade_in()
+	await get_tree().create_timer(1).timeout
+	Dialogic.start("escape")
