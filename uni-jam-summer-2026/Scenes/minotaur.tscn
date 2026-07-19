@@ -261,8 +261,8 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_3gnlo"]
-radius = 1.265
-height = 4.69
+radius = 1.0
+height = 4.0
 
 [node name="Minotaur" type="CharacterBody3D" unique_id=973448386]
 script = ExtResource("1_bbj1y")
