@@ -9,6 +9,7 @@ extends CharacterBody3D
 @onready var player_detection_timer = $PlayerDetectionTimer
 @onready var charge_timer = $ChargeWindupTimer
 @onready var stun_timer = $StunTimer
+@onready var camera: Camera3D = get_viewport().get_camera_3d()
 
 #Movement variables
 @export_group("Movement")
@@ -24,6 +25,11 @@ extends CharacterBody3D
 @export var charge_distance := 20.0
 @export var charge_windup := 1.0
 @export var stun_time := 2.0
+
+#Animation variables
+@onready var front_sprite: AnimatedSprite3D = $ChargeFront
+@onready var side_sprite: AnimatedSprite3D = $ChargeSide
+@onready var idle_sprite: AnimatedSprite3D = $Idle
 
 var charge_destination : Vector3
 var charge_direction : Vector3
@@ -42,9 +48,13 @@ enum {
 	STUN,
 }
 func _ready():
-	print(player_detection)
-	print(player_detection_close)
-	print(player_detection_far)
+	idle_sprite.play()
+	front_sprite.play()
+	side_sprite.play()
+
+	idle_sprite.visible = true
+	front_sprite.visible = false
+	side_sprite.visible = false
 	
 func _physics_process(delta: float) -> void:
 	look_at(global_position + velocity) # makes minotaur look where it's walking
@@ -98,6 +108,7 @@ func _physics_process(delta: float) -> void:
 					break
 		STUN:
 			velocity = Vector3.ZERO
+	update_sprite_direction()
 
 func movement(delta):
 	var destination = navigation_agent.get_next_path_position()
@@ -160,3 +171,33 @@ func _on_player_detection_timer_timeout() -> void:
 		start_charge()
 	else:
 		state = CHASE
+
+func update_sprite_direction():
+	if camera == null:
+		return
+		
+	# Default: hide everything
+	idle_sprite.visible = false
+	front_sprite.visible = false
+	side_sprite.visible = false
+	
+	# Idle while wandering or stunned
+	if state == WONDER or state == STUN or state == CHARGE_WINDUP:
+		idle_sprite.visible = true
+		return
+		
+	#camera direction relative to enemy
+	var to_camera = (camera.global_position - global_position).normalized()
+	var forward = -global_transform.basis.z.normalized()
+	var right = global_transform.basis.x.normalized()
+	var forward_dot = forward.dot(to_camera)
+	var side_dot = right.dot(to_camera)
+	
+	#front view
+	if abs(forward_dot) > 0.7:
+		front_sprite.visible = true
+		
+	#side view
+	else:
+		side_sprite.visible = true
+		side_sprite.flip_h = side_dot < 0
