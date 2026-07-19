@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://bfqvgsgb168mn"]
+
+[ext_resource type="Script" uid="uid://cririsypbr8e0" path="res://Assets/EscapeItems/item_hud.gd" id="1_dw4j0"]
+[ext_resource type="Texture2D" uid="uid://dj3p7l6qx7ro" path="res://Assets/EscapeItems/candleHUD.png" id="1_meno1"]
+[ext_resource type="Texture2D" uid="uid://m0wk8jkbasfc" path="res://Assets/EscapeItems/featherHUD.png" id="2_vt8s6"]
+[ext_resource type="Texture2D" uid="uid://q53lgrfsveov" path="res://Assets/EscapeItems/harnessHUD.png" id="3_dw4j0"]
+
+[node name="ItemHud" type="Node2D" unique_id=269161751]
+script = ExtResource("1_dw4j0")
+
+[node name="CandleHud" type="Sprite2D" parent="." unique_id=770057527]
+position = Vector2(16, 29.000002)
+scale = Vector2(0.46, 0.6)
+texture = ExtResource("1_meno1")
+
+[node name="FeatherHud" type="Sprite2D" parent="." unique_id=244962632]
+position = Vector2(41.000004, 31.000002)
+scale = Vector2(0.49062496, 0.75062495)
+texture = ExtResource("2_vt8s6")
+
+[node name="HarnessHud" type="Sprite2D" parent="." unique_id=2058565068]
+position = Vector2(93.62501, 28.750004)
+scale = Vector2(0.7274999, 0.7249999)
+texture = ExtResource("3_dw4j0")
+
+[connection signal="ready" from="." to="." method="_on_ready"]

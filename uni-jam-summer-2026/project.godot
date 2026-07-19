@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 Transition="*uid://dhey63b4m00vk"
 Dialogic="*uid://crxiwx2gj1mdi"
+eventBUS="*uid://b2k1ps6xqd0hm"
 
 [dialogic]
 

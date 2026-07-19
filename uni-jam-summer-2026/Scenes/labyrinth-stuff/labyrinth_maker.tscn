@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://bpqvb43q6v5oy" path="res://Scenes/player.tscn" id="3_qakg5"]
 [ext_resource type="PackedScene" uid="uid://cm5jiq13druqw" path="res://Scenes/pause_manager.tscn" id="5_ci5qy"]
 [ext_resource type="PackedScene" uid="uid://cmtag4s4bxyh2" path="res://Scenes/TestingBuilds/HudTest.tscn" id="5_nbgq6"]
+[ext_resource type="PackedScene" uid="uid://bfqvgsgb168mn" path="res://Assets/EscapeItems/itemHUD.tscn" id="6_nbgq6"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_qakg5"]
 noise_type = 5
@@ -81,5 +82,9 @@ navigation_mesh = SubResource("NavigationMesh_ci5qy")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 96.63, 0.5, 104.645)
 use_collision = true
 size = Vector3(238.165, 0, 247.716)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1836429448]
+
+[node name="ItemHud" parent="CanvasLayer" unique_id=269161751 instance=ExtResource("6_nbgq6")]
 
 [editable path="Player"]
