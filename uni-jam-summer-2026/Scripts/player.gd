@@ -36,6 +36,9 @@ var regen_stamina: bool = true
 
 @onready var can_accept_input : bool = true
 
+# might be better to do this in a game_manager script in the future
+@export var pauseMenu: Control
+
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -137,3 +140,14 @@ func _on_sprint_regen_timer_timeout() -> void:
 
 func escape():
 	velocity.y = JUMP_VELOCITY*7
+
+
+func _on_hurtbox_area_entered(area: Area3D) -> void:
+	if area.name == "Hitbox":
+		_on_player_death()
+
+func _on_player_death():
+	if pauseMenu:
+		pauseMenu.isPausedEnabled = false
+	
+	$CanvasLayer/GameOverUI.enable()

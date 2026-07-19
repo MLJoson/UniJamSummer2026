@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://cf58ulg54ewb7" path="res://Scenes/player_detection.tscn" id="3_ia38g"]
 [ext_resource type="Texture2D" uid="uid://4bc0n8kj31gk" path="res://Assets/Minotaur/charge-side.png" id="4_2vrhi"]
 [ext_resource type="Texture2D" uid="uid://d14geocnnskba" path="res://Assets/Minotaur/idle.png" id="5_2vrhi"]
+[ext_resource type="PackedScene" uid="uid://c03vajfonypy8" path="res://Scenes/hitbox.tscn" id="6_m0n7a"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_s0mwf"]
 
@@ -259,6 +260,10 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_3gnlo"]
+radius = 1.265
+height = 4.69
+
 [node name="Minotaur" type="CharacterBody3D" unique_id=973448386]
 script = ExtResource("1_bbj1y")
 
@@ -295,17 +300,20 @@ one_shot = true
 [node name="PlayerDetectionTimer" type="Timer" parent="." unique_id=246783198]
 
 [node name="PlayerDetection" parent="." unique_id=974627455 instance=ExtResource("3_ia38g")]
+visible = false
 
 [node name="CollisionShape3D" parent="PlayerDetection" index="0" unique_id=1402076048]
 shape = SubResource("CylinderShape3D_qckco")
 
 [node name="PlayerDetectionClose" parent="." unique_id=1981509599 instance=ExtResource("3_ia38g")]
+visible = false
 fovDegrees = 180
 
 [node name="CollisionShape3D" parent="PlayerDetectionClose" index="0" unique_id=1402076048]
 shape = SubResource("CylinderShape3D_ia38g")
 
 [node name="PlayerDetectionFar" parent="." unique_id=1417481518 instance=ExtResource("3_ia38g")]
+visible = false
 
 [node name="CollisionShape3D" parent="PlayerDetectionFar" index="0" unique_id=1402076048]
 shape = SubResource("CylinderShape3D_axg2i")
@@ -327,6 +335,13 @@ transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 0, 2.2827487, 0)
 billboard = 2
 sprite_frames = SubResource("SpriteFrames_e0o5n")
 
+[node name="Hitbox" parent="." unique_id=1955130124 instance=ExtResource("6_m0n7a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.2346003, 0)
+
+[node name="CollisionShape3D" parent="Hitbox" index="0" unique_id=957386594]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.15360284, 0)
+shape = SubResource("CapsuleShape3D_3gnlo")
+
 [connection signal="timeout" from="StunTimer" to="." method="_on_stun_timer_timeout"]
 [connection signal="timeout" from="ChargeWindupTimer" to="." method="_on_charge_windup_timer_timeout"]
 [connection signal="timeout" from="PlayerDetectionTimer" to="." method="_on_player_detection_timer_timeout"]
@@ -334,3 +349,4 @@ sprite_frames = SubResource("SpriteFrames_e0o5n")
 [editable path="PlayerDetection"]
 [editable path="PlayerDetectionClose"]
 [editable path="PlayerDetectionFar"]
+[editable path="Hitbox"]

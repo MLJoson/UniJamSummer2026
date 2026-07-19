@@ -2,7 +2,9 @@
 
 [ext_resource type="Script" uid="uid://bbtd1fgmnv6is" path="res://Scripts/player.gd" id="1_v0iea"]
 [ext_resource type="AudioStream" uid="uid://657n65dad0gk" path="res://Assets/DefaultSounds/Walking.wav" id="2_cvnsp"]
+[ext_resource type="PackedScene" uid="uid://0r6yt7fqsrd" path="res://Scenes/game_over_ui.tscn" id="2_fkybt"]
 [ext_resource type="AudioStream" uid="uid://shbxxqbom0l6" path="res://Assets/DefaultSounds/HeavyBreathing.wav" id="3_6t5aa"]
+[ext_resource type="PackedScene" uid="uid://gc8kd40utjub" path="res://Scenes/hurtbox.tscn" id="4_vgqql"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_cvnsp"]
 
@@ -62,6 +64,8 @@ _data = {
 &"fade_to_black": SubResource("Animation_fkybt")
 }
 
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_fkybt"]
+
 [node name="Player" type="CharacterBody3D" unique_id=381315849 groups=["Player"]]
 collision_layer = 3
 script = ExtResource("1_v0iea")
@@ -106,12 +110,23 @@ color = Color(0, 0, 0, 1)
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/Control" unique_id=1189585375]
 libraries/ = SubResource("AnimationLibrary_x3wgy")
 
+[node name="GameOverUI" parent="CanvasLayer" unique_id=2101669983 instance=ExtResource("2_fkybt")]
+visible = false
+
 [node name="Footsteps" type="AudioStreamPlayer3D" parent="." unique_id=2017120344]
 stream = ExtResource("2_cvnsp")
 
 [node name="Breathing" type="AudioStreamPlayer3D" parent="." unique_id=1816304400]
 stream = ExtResource("3_6t5aa")
 
+[node name="Hurtbox" parent="." unique_id=772218655 instance=ExtResource("4_vgqql")]
+
+[node name="CollisionShape3D" parent="Hurtbox" index="0" unique_id=2063674426]
+shape = SubResource("CapsuleShape3D_fkybt")
+
 [connection signal="timeout" from="sprint_reduce_timer" to="." method="_on_sprint_reduce_timer_timeout"]
 [connection signal="timeout" from="sprint_regen_timer" to="." method="_on_sprint_regen_timer_timeout"]
 [connection signal="animation_finished" from="CanvasLayer/Control/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
+
+[editable path="Hurtbox"]

@@ -2,11 +2,14 @@ extends Node
 var pauseScene 
 var paused = false
 
+var isPausedEnabled: bool = true
+
 func _input(event) -> void:
-	if event.is_action_pressed("pause") && paused == false:
-		pauseGame()
-	elif event.is_action_pressed("pause") && paused == true:
-		unpauseGame()
+	if isPausedEnabled == true:
+		if event.is_action_pressed("pause") && paused == false:
+			pauseGame()
+		elif event.is_action_pressed("pause") && paused == true:
+			unpauseGame()
 
 func pauseGame() -> void:
 	get_node(".").visible = true

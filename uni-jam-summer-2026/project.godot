@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="UniJamSummer2026"
-run/main_scene="uid://d2etwyqiaypoy"
+run/main_scene="uid://dbdtbalxmodvr"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="res://icon.svg"
 
@@ -25,7 +25,7 @@ Dialogic="*uid://crxiwx2gj1mdi"
 
 directories/dch_directory={}
 directories/dtl_directory={
-"Opening": "res://Timelines/opening.dtl"
+"opening": "res://Timelines/opening.dtl"
 }
 glossary/default_case_sensitive=true
 layout/style_list=["res://Styles/DefaultDialogue.tres"]
