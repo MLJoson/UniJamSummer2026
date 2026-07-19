@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" uid="uid://byki00it01xy3" path="res://Scripts/PauseManager.gd" id="1_s3tu7"]
 [ext_resource type="FontFile" uid="uid://cws1k2d04mpph" path="res://Assets/PossumSaltareNF.ttf" id="2_6xe1p"]
-[ext_resource type="StyleBox" uid="uid://os1j5p8iguh1" path="res://Assets/TextureBox/ButtonNormal.tres" id="3_rcrlu"]
-[ext_resource type="StyleBox" uid="uid://uvm8ibodyjwi" path="res://Assets/TextureBox/ButtonPressed.tres" id="4_62x2w"]
+[ext_resource type="StyleBox" uid="uid://os1j5p8iguh1" path="res://Assets/ArtAssets/TextureBox/ButtonNormal.tres" id="3_rcrlu"]
+[ext_resource type="StyleBox" uid="uid://uvm8ibodyjwi" path="res://Assets/ArtAssets/TextureBox/ButtonPressed.tres" id="4_62x2w"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_s3tu7"]
 font_size = 37
