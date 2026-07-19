@@ -1,8 +1,21 @@
 [gd_scene format=3 uid="uid://cc01fpkc6sk8k"]
 
 [ext_resource type="PackedScene" uid="uid://cc3whexwne75k" path="res://Assets/EscapeItems/harness.blend" id="1_e6bro"]
+[ext_resource type="Script" uid="uid://d36vphiduumhj" path="res://Assets/EscapeItems/harness.gd" id="2_bp86i"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_e6bro"]
+size = Vector3(0.07635498, 0.39367676, 1)
 
 [node name="Node3D" type="Node3D" unique_id=158246770]
 
 [node name="harness" parent="." unique_id=360722019 instance=ExtResource("1_e6bro")]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
+script = ExtResource("2_bp86i")
+
+[node name="Area3D" type="Area3D" parent="harness" unique_id=1952024645]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="harness/Area3D" unique_id=1738834869]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0010070801, -0.00091552734, 0)
+shape = SubResource("BoxShape3D_e6bro")
+
+[connection signal="body_entered" from="harness/Area3D" to="harness" method="_on_area_3d_body_entered"]
