@@ -23,10 +23,11 @@
 [ext_resource type="Texture2D" uid="uid://drbsjtpem4wer" path="res://Assets/GameOverCutscene/21.png" id="20_vx6bv"]
 [ext_resource type="Texture2D" uid="uid://bndyrlreu4i58" path="res://Assets/GameOverCutscene/22.png" id="21_2w2su"]
 [ext_resource type="FontFile" uid="uid://cws1k2d04mpph" path="res://Assets/PossumSaltareNF.ttf" id="22_1vwh6"]
+[ext_resource type="AudioStream" uid="uid://c8t5x52ha3ceg" path="res://Assets/GameOverCutscene/freesound_community-fuzzy-jumpscare-80560.mp3" id="23_4nxgh"]
 
 [sub_resource type="Animation" id="Animation_2mpre"]
 resource_name = "GameOver"
-length = 2.4444556
+length = 7.0
 step = 0.11111111
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -40,6 +41,21 @@ tracks/0/keys = {
 "update": 1,
 "values": [ExtResource("1_6ewkf"), ExtResource("2_kbmbd"), ExtResource("3_4nxgh"), ExtResource("4_0x4l4"), ExtResource("5_8sybo"), ExtResource("6_hkb6a"), ExtResource("1_6ewkf"), ExtResource("7_vdx2e"), ExtResource("8_0gpx0"), ExtResource("9_7kjyf"), ExtResource("10_tnodr"), ExtResource("11_xuarc"), ExtResource("12_opsg7"), ExtResource("13_x6mqb"), ExtResource("14_85dnu"), ExtResource("15_sgpsm"), ExtResource("16_68lnu"), ExtResource("17_b3llu"), ExtResource("18_sx867"), ExtResource("19_uu34i"), ExtResource("20_vx6bv"), ExtResource("21_2w2su")]
 }
+tracks/1/type = "audio"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../AudioStreamPlayer2D")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"clips": [{
+"end_offset": 4.2400007,
+"start_offset": 0.0,
+"stream": ExtResource("23_4nxgh")
+}],
+"times": PackedFloat32Array(1.2222222)
+}
+tracks/1/use_blend = true
 
 [sub_resource type="Animation" id="Animation_3hqm1"]
 length = 0.001
@@ -185,6 +201,8 @@ text = "QUIT"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="VBoxContainer1" unique_id=1659521864]
 libraries/ = SubResource("AnimationLibrary_8sybo")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1716074432]
 
 [connection signal="animation_finished" from="TextureRect/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="pressed" from="VBoxContainer1/VBoxContainer2/Retry" to="." method="_on_retry_pressed"]
