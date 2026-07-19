@@ -7,6 +7,8 @@ extends Node3D
 	set(value):
 		size.x = clamp(value.x, 0, 100)
 		size.y = clamp(value.y, 0, 100)
+		
+@export var wall_collision_scene: PackedScene
 
 var start_pos : Vector2i
 
@@ -29,6 +31,7 @@ func generate() -> void:
 	create_base_tiles()
 	create_spawn()
 	generate_pathing()
+	generate_wall_collisions()
 	itemPos.clear()
 	generate_special_rooms()
 	clear_items()
@@ -152,3 +155,20 @@ func clear_items():
 	for child in get_children():
 		if child.scene_file_path.begins_with("res://Assets/EscapeItems/"):
 			child.free()
+
+func generate_wall_collisions():
+	for x in size.x:
+		for z in size.y:
+			var cell = Vector3i(x, 0, z)
+
+			if $GridMap.get_cell_item(cell) != -1:
+				var world_pos = $GridMap.to_global(
+					$GridMap.map_to_local(Vector3i(x, 0, z))
+				)
+
+				create_wall_collision(world_pos)
+				
+func create_wall_collision(pos: Vector3):
+	var wall = wall_collision_scene.instantiate()
+	add_child(wall)
+	wall.global_position = pos

@@ -1,0 +1,59 @@
+[gd_scene format=4 uid="uid://sdyqsu7bfugc"]
+
+[ext_resource type="Texture2D" uid="uid://dxfa5ninrwqof" path="res://Materials/BrickTexture_Walltexture.jpg" id="1_3jb71"]
+[ext_resource type="Texture2D" uid="uid://bmwni8dsqory6" path="res://Materials/BrickTexture_bumpmap2.jpg" id="2_oybu8"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_njhyf"]
+resource_name = "Textured Cube"
+cull_mode = 2
+albedo_texture = ExtResource("1_3jb71")
+normal_enabled = true
+normal_texture = ExtResource("2_oybu8")
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_qlnuy"]
+_surfaces = [{
+"aabb": AABB(-1, -1, -1, 2, 2, 2),
+"format": 34896613377,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAwACAAEAAAAEAAEAAwAFAAIABQAAAAIABgAEAAAABQAGAAAABwABAAQABwADAAEABgAHAAQABQADAAcABQAHAAYA"),
+"name": "Textured Cube",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("/////wAAAAAAAP////8AAAAA//8AAAAAAAAAAP//AAD///////8AAAAAAAAAAAAA//8AAAAAAAD//wAA//8AAA==")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_jpumo"]
+resource_name = "BrickTexture_Cube"
+_surfaces = [{
+"aabb": AABB(-1, -1, -1, 2, 2, 2),
+"attribute_data": PackedByteArray("//8AAAAA//8AAAAA//////////8AAAAA//8AAAAA//8AAP////8AAAAAAAD/////AAAAAP///////wAAAAD///////8AAAAA//8AAAAA//8AAP////8AAAAAAAD/////"),
+"format": 34896613399,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACAALAAkADAANAA4ADAAPAA0AEAARABIAEAATABEAFAAVABYAFAAXABUA"),
+"material": SubResource("StandardMaterial3D_njhyf"),
+"name": "Textured Cube",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray("/////wAA/78AAP//////vwAA//8AAP+//////////7///wAA//8AgAAA/////wCA////////AIAAAAAA//8AgAAAAAD//wAAAAD//wAAAAAAAP////8AAAAAAAAAAAAAAAAAAAAA/z///wAA////P///AAAAAP8/AAAAAP///z///wAAAAD/v/////////+//////wAA/7///wAA////vwAAAAAAAAAA/////wAAAAAAAP//AAAAAP//AAAAAAAA////f////3////9/////f/9/////f////3////9/////P/9//z//f/8//3//P/9/AAD/fwAA/38AAP9/AAD/f/9/AAD/fwAA/38AAP9/AAD///9/////f////3////9/")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_qlnuy")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3jb71"]
+size = Vector3(2, 2, 2)
+
+[node name="BrickTexture2" type="Node3D" unique_id=1922447154]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+
+[node name="TexturedCube" type="MeshInstance3D" parent="." unique_id=1647088342]
+mesh = SubResource("ArrayMesh_jpumo")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="TexturedCube" unique_id=1194358755]
+collision_layer = 255
+collision_mask = 255
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TexturedCube/StaticBody3D" unique_id=1994899649]
+shape = SubResource("BoxShape3D_3jb71")
