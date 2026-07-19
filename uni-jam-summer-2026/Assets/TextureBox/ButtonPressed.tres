@@ -1,7 +1,0 @@
-[gd_resource type="StyleBoxTexture" format=3 uid="uid://uvm8ibodyjwi"]
-
-[ext_resource type="Texture2D" uid="uid://1gayybxxdysw" path="res://Assets/GrayBrick2.png" id="1_vyq7d"]
-
-[resource]
-texture = ExtResource("1_vyq7d")
-modulate_color = Color(1, 0.10980392, 0.13333334, 1)

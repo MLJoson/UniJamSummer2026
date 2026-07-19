@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://yh4lhj8pu24m"]
+
+[ext_resource type="Script" uid="uid://d4iqdhsv0bpq6" path="res://Scripts/opening.gd" id="1_7ynk8"]
+[ext_resource type="PackedScene" uid="uid://cdyeg0rtbunmu" path="res://Scenes/TestingBuilds/PauseMenutest.tscn" id="2_c8s8l"]
+
+[node name="Opening" type="Control" unique_id=639411113]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_7ynk8")
+start_scene = ExtResource("2_c8s8l")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1355938961]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0035191667, 0.0035191681, 0.0035191672, 1)

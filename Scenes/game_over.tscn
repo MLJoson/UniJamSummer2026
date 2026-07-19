@@ -1,0 +1,191 @@
+[gd_scene format=3 uid="uid://cxawoceg0hqx7"]
+
+[ext_resource type="Texture2D" uid="uid://dlwgm0q36cp10" path="res://Assets/GameOverCutscene/1.png" id="1_6ewkf"]
+[ext_resource type="Script" uid="uid://xq1r3apfh0nb" path="res://Scripts/game_over.gd" id="1_kbmbd"]
+[ext_resource type="Texture2D" uid="uid://cgjtnbbaiw4e5" path="res://Assets/GameOverCutscene/2.png" id="2_kbmbd"]
+[ext_resource type="Texture2D" uid="uid://co7l5m6ddnk87" path="res://Assets/GameOverCutscene/3.png" id="3_4nxgh"]
+[ext_resource type="Texture2D" uid="uid://b561opnbe3yok" path="res://Assets/GameOverCutscene/4.png" id="4_0x4l4"]
+[ext_resource type="Texture2D" uid="uid://dyguaxwmkdfie" path="res://Assets/GameOverCutscene/5.png" id="5_8sybo"]
+[ext_resource type="Texture2D" uid="uid://3hp527dgyr1e" path="res://Assets/GameOverCutscene/6.png" id="6_hkb6a"]
+[ext_resource type="Texture2D" uid="uid://c6a5gx6i1vai0" path="res://Assets/GameOverCutscene/8.png" id="7_vdx2e"]
+[ext_resource type="Texture2D" uid="uid://b0i7glwdud622" path="res://Assets/GameOverCutscene/9.png" id="8_0gpx0"]
+[ext_resource type="Texture2D" uid="uid://ch6asl0ek4kus" path="res://Assets/GameOverCutscene/10.png" id="9_7kjyf"]
+[ext_resource type="Texture2D" uid="uid://clscovgqv0i7c" path="res://Assets/GameOverCutscene/11.png" id="10_tnodr"]
+[ext_resource type="Texture2D" uid="uid://blsp0rsog0fa0" path="res://Assets/GameOverCutscene/12.png" id="11_xuarc"]
+[ext_resource type="Texture2D" uid="uid://bgfko3qt2wjqu" path="res://Assets/GameOverCutscene/13.png" id="12_opsg7"]
+[ext_resource type="Texture2D" uid="uid://bqe6allv6v8dp" path="res://Assets/GameOverCutscene/14.png" id="13_x6mqb"]
+[ext_resource type="Texture2D" uid="uid://b2g17y8lb3vnu" path="res://Assets/GameOverCutscene/15.png" id="14_85dnu"]
+[ext_resource type="Texture2D" uid="uid://b5d22fyspix4a" path="res://Assets/GameOverCutscene/16.png" id="15_sgpsm"]
+[ext_resource type="Texture2D" uid="uid://buudc58se1qqj" path="res://Assets/GameOverCutscene/17.png" id="16_68lnu"]
+[ext_resource type="Texture2D" uid="uid://b7xwx65u5inqk" path="res://Assets/GameOverCutscene/18.png" id="17_b3llu"]
+[ext_resource type="Texture2D" uid="uid://cmefs6jbm88ue" path="res://Assets/GameOverCutscene/19.png" id="18_sx867"]
+[ext_resource type="Texture2D" uid="uid://cdp4yvv75wl07" path="res://Assets/GameOverCutscene/20.png" id="19_uu34i"]
+[ext_resource type="Texture2D" uid="uid://drbsjtpem4wer" path="res://Assets/GameOverCutscene/21.png" id="20_vx6bv"]
+[ext_resource type="Texture2D" uid="uid://bndyrlreu4i58" path="res://Assets/GameOverCutscene/22.png" id="21_2w2su"]
+[ext_resource type="FontFile" uid="uid://cws1k2d04mpph" path="res://Assets/PossumSaltareNF.ttf" id="22_1vwh6"]
+
+[sub_resource type="Animation" id="Animation_2mpre"]
+resource_name = "GameOver"
+length = 2.4444556
+step = 0.11111111
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.11111111, 0.22222222, 0.33333334, 0.44444445, 0.5555556, 0.6666667, 0.7777778, 0.8888889, 1, 1.1111112, 1.2222222, 1.3333334, 1.4444444, 1.5555556, 1.6666666, 1.7777778, 1.8888888, 2, 2.1111112, 2.2222223, 2.3333333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("1_6ewkf"), ExtResource("2_kbmbd"), ExtResource("3_4nxgh"), ExtResource("4_0x4l4"), ExtResource("5_8sybo"), ExtResource("6_hkb6a"), ExtResource("1_6ewkf"), ExtResource("7_vdx2e"), ExtResource("8_0gpx0"), ExtResource("9_7kjyf"), ExtResource("10_tnodr"), ExtResource("11_xuarc"), ExtResource("12_opsg7"), ExtResource("13_x6mqb"), ExtResource("14_85dnu"), ExtResource("15_sgpsm"), ExtResource("16_68lnu"), ExtResource("17_b3llu"), ExtResource("18_sx867"), ExtResource("19_uu34i"), ExtResource("20_vx6bv"), ExtResource("21_2w2su")]
+}
+
+[sub_resource type="Animation" id="Animation_3hqm1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [null]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_djsei"]
+_data = {
+&"GameOver": SubResource("Animation_2mpre"),
+&"RESET": SubResource("Animation_3hqm1")
+}
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dbi1y"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4nxgh"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3e18v"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gwiyb"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kbmbd"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Animation" id="Animation_4nxgh"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_0x4l4"]
+resource_name = "fade_in"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.96666664),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8sybo"]
+_data = {
+&"RESET": SubResource("Animation_4nxgh"),
+&"fade_in": SubResource("Animation_0x4l4")
+}
+
+[node name="GameOver" type="Control" unique_id=1371136772]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_kbmbd")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=453868327]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="TextureRect" unique_id=558891440]
+libraries/ = SubResource("AnimationLibrary_djsei")
+
+[node name="VBoxContainer1" type="VBoxContainer" parent="." unique_id=444892294]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -46.0
+offset_top = -11.5
+offset_right = 46.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 50
+
+[node name="Label" type="Label" parent="VBoxContainer1" unique_id=288082312]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("22_1vwh6")
+theme_override_font_sizes/font_size = 100
+text = "GAME OVER"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="VBoxContainer1" unique_id=1593624990]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 25
+
+[node name="Retry" type="Button" parent="VBoxContainer1/VBoxContainer2" unique_id=1589666047]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0.92156863, 0.32941177, 0.37254903, 1)
+theme_override_colors/font_hover_color = Color(0.92156863, 0.32941177, 0.37254903, 1)
+theme_override_fonts/font = ExtResource("22_1vwh6")
+theme_override_font_sizes/font_size = 55
+theme_override_styles/normal = SubResource("StyleBoxEmpty_dbi1y")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_4nxgh")
+theme_override_styles/hover = SubResource("StyleBoxFlat_3e18v")
+text = "RETRY"
+
+[node name="Quit" type="Button" parent="VBoxContainer1/VBoxContainer2" unique_id=1320017213]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0.92156863, 0.32941177, 0.37254903, 1)
+theme_override_fonts/font = ExtResource("22_1vwh6")
+theme_override_font_sizes/font_size = 55
+theme_override_styles/normal = SubResource("StyleBoxEmpty_gwiyb")
+theme_override_styles/hover = SubResource("StyleBoxFlat_kbmbd")
+text = "QUIT"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="VBoxContainer1" unique_id=1659521864]
+libraries/ = SubResource("AnimationLibrary_8sybo")
+
+[connection signal="animation_finished" from="TextureRect/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="pressed" from="VBoxContainer1/VBoxContainer2/Retry" to="." method="_on_retry_pressed"]
+[connection signal="pressed" from="VBoxContainer1/VBoxContainer2/Quit" to="." method="_on_quit_pressed"]
