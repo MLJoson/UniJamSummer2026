@@ -149,5 +149,6 @@ func _on_hurtbox_area_entered(area: Area3D) -> void:
 func _on_player_death():
 	if pauseMenu:
 		pauseMenu.isPausedEnabled = false
-	
-	$CanvasLayer/GameOverUI.enable()
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	get_tree().change_scene_to_file("res://Scenes/game_over.tscn")
+	#$CanvasLayer/GameOverUI.enable()
