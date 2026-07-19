@@ -7,6 +7,7 @@ var currentIndex: int = 0
 const ZERO_VOLUME: float = -80
 
 func _ready() -> void:
+	play()
 	for i in range(sync_stream.stream_count):
 		sync_stream.set_sync_stream_volume(i, ZERO_VOLUME)
 	

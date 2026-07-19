@@ -7,6 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://d14geocnnskba" path="res://Assets/Minotaur/idle.png" id="5_2vrhi"]
 [ext_resource type="PackedScene" uid="uid://c03vajfonypy8" path="res://Scenes/hitbox.tscn" id="6_m0n7a"]
 [ext_resource type="Script" uid="uid://dyhtfxenpidjk" path="res://Scripts/music_manager.gd" id="7_3gnlo"]
+[ext_resource type="AudioStream" uid="uid://dpnaor7v8f13y" path="res://Assets/Audio/Music/LABYRINTH_tension_loop.wav" id="7_l4idv"]
+[ext_resource type="AudioStream" uid="uid://lga0e476usu6" path="res://Assets/Audio/Music/LABYRINTH_action_loop.wav" id="8_qmyrl"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_s0mwf"]
 
@@ -265,6 +267,13 @@ animations = [{
 radius = 1.0
 height = 4.0
 
+[sub_resource type="AudioStreamSynchronized" id="AudioStreamSynchronized_823ls"]
+stream_count = 2
+stream_0/stream = ExtResource("7_l4idv")
+stream_0/volume = -25.0
+stream_1/stream = ExtResource("8_qmyrl")
+stream_1/volume = -25.0
+
 [node name="Minotaur" type="CharacterBody3D" unique_id=973448386]
 script = ExtResource("1_bbj1y")
 
@@ -344,6 +353,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.15360284, 0)
 shape = SubResource("CapsuleShape3D_3gnlo")
 
 [node name="MusicManager" type="AudioStreamPlayer" parent="." unique_id=190340749]
+stream = SubResource("AudioStreamSynchronized_823ls")
 script = ExtResource("7_3gnlo")
 
 [connection signal="timeout" from="StunTimer" to="." method="_on_stun_timer_timeout"]
