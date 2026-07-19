@@ -1,7 +1,0 @@
-[gd_scene format=3 uid="uid://cos7hygxnjx8v"]
-
-[ext_resource type="PackedScene" uid="uid://ctpt7susmq7ps" path="res://Assets/EscapeItems/pedestal.blend" id="1_aywa8"]
-
-[node name="Node3D" type="Node3D" unique_id=1662236855]
-
-[node name="pedestal" parent="." unique_id=1616055474 instance=ExtResource("1_aywa8")]

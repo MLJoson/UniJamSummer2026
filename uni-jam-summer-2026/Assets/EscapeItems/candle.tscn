@@ -1,8 +1,0 @@
-[gd_scene format=3 uid="uid://cop6e1y4bnew6"]
-
-[ext_resource type="PackedScene" uid="uid://c81tu71ov21jb" path="res://Assets/EscapeItems/candle.blend" id="1_3y3fd"]
-
-[node name="Node3D" type="Node3D" unique_id=1516498268]
-
-[node name="candle" parent="." unique_id=1773677408 instance=ExtResource("1_3y3fd")]
-transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)

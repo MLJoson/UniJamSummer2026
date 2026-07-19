@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://oimjg6js1xd8"]
+
+[ext_resource type="PackedScene" uid="uid://dm6w7pc2t0sdt" path="res://Assets/EscapeItems/feather.blend" id="1_htrfv"]
+
+[node name="Node3D" type="Node3D" unique_id=1239145926]
+
+[node name="feather" parent="." unique_id=1236723067 instance=ExtResource("1_htrfv")]

@@ -1,0 +1,57 @@
+[gd_scene format=3 uid="uid://cdyeg0rtbunmu"]
+
+[ext_resource type="Texture2D" uid="uid://dgshu4j328naa" path="res://Assets/regularTrader.webp" id="1_p1h1t"]
+[ext_resource type="PackedScene" uid="uid://bpqvb43q6v5oy" path="res://Scenes/player.tscn" id="2_y8j3f"]
+[ext_resource type="PackedScene" uid="uid://cm5jiq13druqw" path="res://Scenes/pause_manager.tscn" id="3_y8j3f"]
+[ext_resource type="PackedScene" uid="uid://cmtag4s4bxyh2" path="res://Scenes/TestingBuilds/HudTest.tscn" id="4_vrobk"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_vrobk"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_g10ho"]
+sky_material = SubResource("ProceduralSkyMaterial_vrobk")
+
+[sub_resource type="Environment" id="Environment_rf4e0"]
+background_mode = 2
+sky = SubResource("Sky_g10ho")
+tonemap_mode = 2
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3c1sc"]
+size = Vector3(50, 0.01, 50)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_roavo"]
+albedo_texture = ExtResource("1_p1h1t")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_mw5t6"]
+size = Vector2(50, 50)
+
+[node name="PlayerMovement" type="Node3D" unique_id=1752000256]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1283699281]
+environment = SubResource("Environment_rf4e0")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1911935457]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.35608864, 31.218174, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1655477287]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=2136867887]
+shape = SubResource("BoxShape3D_3c1sc")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D" unique_id=1230816906]
+material_override = SubResource("StandardMaterial3D_roavo")
+mesh = SubResource("PlaneMesh_mw5t6")
+
+[node name="Player" parent="." unique_id=381315849 instance=ExtResource("2_y8j3f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.056459427, 3.4945784, 0)
+
+[node name="HUD" parent="." unique_id=1288191022 node_paths=PackedStringArray("player") instance=ExtResource("4_vrobk")]
+mouse_filter = 2
+player = NodePath("../Player")
+playerHealth = 20.0
+
+[node name="PauseManager" parent="." unique_id=841703603 instance=ExtResource("3_y8j3f")]
+visible = false
+visibility_layer = 2
+mouse_filter = 2

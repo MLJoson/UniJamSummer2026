@@ -1,0 +1,90 @@
+[gd_scene format=3 uid="uid://cm5jiq13druqw"]
+
+[ext_resource type="Script" uid="uid://byki00it01xy3" path="res://Scripts/PauseManager.gd" id="1_s3tu7"]
+[ext_resource type="FontFile" uid="uid://cws1k2d04mpph" path="res://Assets/PossumSaltareNF.ttf" id="2_6xe1p"]
+[ext_resource type="StyleBox" uid="uid://os1j5p8iguh1" path="res://Assets/TextureBox/ButtonNormal.tres" id="3_rcrlu"]
+[ext_resource type="StyleBox" uid="uid://uvm8ibodyjwi" path="res://Assets/TextureBox/ButtonPressed.tres" id="4_62x2w"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_s3tu7"]
+font_size = 37
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_8elxi"]
+
+[node name="PauseManager" type="Control" unique_id=841703603]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_s3tu7")
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=177833191]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -127.5
+offset_right = 150.0
+offset_bottom = 127.5
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(65.5, 0)
+theme_override_styles/panel = ExtResource("3_rcrlu")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer" unique_id=1626369467]
+layout_mode = 2
+theme_override_constants/margin_left = 22
+theme_override_constants/margin_top = 22
+theme_override_constants/margin_right = 22
+theme_override_constants/margin_bottom = 22
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer" unique_id=642102021]
+layout_mode = 2
+theme_override_constants/separation = 90
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=1141932581]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("2_6xe1p")
+text = "Paused"
+label_settings = SubResource("LabelSettings_s3tu7")
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=1138936685]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+theme_override_constants/separation = 16
+
+[node name="ContinueButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/VBoxContainer" unique_id=1400740700]
+clip_contents = true
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0.8784314, 0.8784314, 0.8784314, 1)
+theme_override_colors/font_hover_color = Color(0.9882353, 0.3137255, 0.2509804, 1)
+theme_override_fonts/font = ExtResource("2_6xe1p")
+theme_override_font_sizes/font_size = 27
+theme_override_styles/normal = ExtResource("3_rcrlu")
+theme_override_styles/hover = ExtResource("4_62x2w")
+text = "Continue"
+icon = SubResource("ViewportTexture_8elxi")
+
+[node name="ExitButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/VBoxContainer" unique_id=1355789654]
+clip_contents = true
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0.8784314, 0.8784314, 0.8784314, 1)
+theme_override_colors/font_hover_color = Color(0.98634666, 0.31408733, 0.25206193, 1)
+theme_override_fonts/font = ExtResource("2_6xe1p")
+theme_override_font_sizes/font_size = 27
+theme_override_styles/normal = ExtResource("3_rcrlu")
+theme_override_styles/hover = ExtResource("4_62x2w")
+text = "Exit"
+
+[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/ContinueButton" to="." method="_on_continue_button_pressed"]
+[connection signal="button_down" from="PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/ExitButton" to="." method="_on_exit_button_button_down"]
