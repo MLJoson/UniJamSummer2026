@@ -60,3 +60,5 @@ color = Color(0, 0, 0, 1)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="ColorRect" unique_id=1869969500]
 libraries/ = SubResource("AnimationLibrary_ah04o")
+
+[connection signal="ready" from="." to="." method="_on_ready"]
